@@ -1,0 +1,930 @@
+"The Dragon Diamond" by Kenneth Pedersen
+
+[release along with an interpreter.]
+
+[HELP MENU]
+Include Basic Screen Effects by Emily Short. Include Menus by Emily Short. Include Basic Help Menu by Emily Short.
+
+Table of Basic Help Options (continued)
+title	subtable	description	toggle
+"Hints if you are stuck"	Table of hinttable	"-"	--
+"Contacting the author"	--	"-"	--
+
+
+Table of Basic Help Options (amended)
+title	subtable	description	toggle
+"Introduction to [story title]"	--	"[line break]Dragon Diamond was written by Kenneth Pedersen, originally on c64, then ported to ADRIFT and INFORM. Thanks must go to the one who created INFORM, Graham Nelson and to Emily Short for the extensions 'Basic Screen Effects', 'Menus' and 'Basic Help Menu'."	--
+"Instructions for Play"	--	"[line break]This game is designed such, that it cannot become unwinnable, except for the end game where you have a limited number of turns available. Some of the puzzles have more than one solution, so you may find that some objects are not needed in your way through the game. You can get an overview of words understood by this game by typing VOCAB. In addition you can get some hints by typing HELP. There are hints for all puzzles in the game, so it should be possible to complete the game in this manner. It is however recommended to solve as much of the game as possible without using hints, as this game is primarily a puzzle game, not a story."	--
+"Hints if you are stuck"	Table of hinttable	--	--
+"Contacting the author"	--	"[line break]If you have any difficulties with [story title], please contact me at kennethvpedersen@yahoo.dk."	--
+
+Table of hinttable
+title	subtable	description	toggle
+"Obtaining a rope"	--	"Have you examined Leon? If you try to take the rope, he will challenge you. Fight Leon."	--
+"Obtaining a spade"	--	"Examine the mud and examine the basket. You should then have the ingredients so you can: Make Spade."	--
+"Obtaining an axe"	--	"Though the axe is useful, it is not required to complete the game. If you want it you should first dip your hands in the mud. Then you can take it."	--
+"Crossing the lake"	--	"You can swim across the river in two ways: 1. Feed the crocodiles, 2. Jump out of the window if your have managed to enter the cotttage in the tree."	--
+"What should I do by the volcano?"	--	"If you examine the volcano you will see a ledge. You should get down there."	--
+"How do I get to the ledge?"	--	"There are two possible solutions to this one: 1. Chop the birch, 2. tie the rope to the birch. Now you can go down."	--
+"What should I do with the dwarf?"	--	"Just talk to him and you will receive a useful object."	--
+"How do I reach the platform in the tree?"	--	"If you already have the ring, it is simple. Just wear the ring. If you haven't obtained the ring yet, you must look under the basket to find a hook. Tie the rope to the hook. Then go south and pull the string. Finally you must tie the string to a tree. When you go back to the tree, there is now a rope dangling down from above."	--
+"What should I do in the hut?"	--	"Look under the bed."	--
+"How do I get rid of the archer?"	--	"Throw the spear at the archer."	--
+"How do I cross the quicksand pool?"	--	"On the southern part of the bank, you can see a branch projected over the pool. You should throw the rope at the branch and then jump onto the dangling rope."	--
+"What can I do at the beach?"	--	"Assuming you have a spade, you can dig a hole in the sand. That is all you can do for now."	--
+"What should I do by the Devil Mountain?"	--	"Wear the ring to reach the top of the mountain."	--
+"By chimney - what now?"	--	"Put the twigs in the chimney. You better get down again quickly, the same way you got up here."	--
+"The dragon keeps killing me!"	--	"Once you have stuffed the chimney, you have a limited amount of moves to get down from the mountain, go to the beach, dig a hole, go down in the hole and wait for the dragon."	--
+"It is all dark!"	--	"The dragon is just above you! Kill the dragon!"	--
+
+[SCORING]
+[killing leon:	7]
+[making the spade:	5]
+[entering platform: 	8]
+[entering north of lake:	8]
+[entering ledge: 	8]
+[finding the spear:	8] 
+[killing the archer:	8]
+[throwing the rope over pool:	8]
+[digging a hole on the beach:	8]
+[entering the mountain top:	8]
+[stuffing the chimney:	8]
+[entering the dark hole:	8]
+[killing the dragon:	8]
+[Obtaining the axe:	1]
+[TOTAL:	101]
+Use scoring. The maximum score is 101.
+
+Table of Rankings 
+Score	Rank
+0	"Wannabe Adventurer"
+7	"Murderous Wannabe adventurer"
+12	"Amateur Adventurer"
+36	"Apprentice"
+50	"Trained Adventurer"
+75	"Professional Adventurer"
+100	"Master Adventurer"
+101	"Perfect Adventurer"
+
+BeenInPlatform is initially 0.
+BeenInShore is initially 0.
+BeenInLedge is initially 0.
+BeenInTop is initially 0.
+
+Every turn:
+	if player is in Platform and BeenInPlatform is 0 begin;
+		increase score by 8;
+		increase BeenInPlatform by 1;
+	end if;
+	if player is in Northern Lake Shore and BeenInShore is 0 begin;
+		increase score by 8;
+		increase BeenInShore by 1;
+	end if;
+	if player is in Ledge and BeenInLedge is 0 begin;
+		increase score by 8;
+		increase BeenInLedge by 1;
+	end if;	
+	if player is in Top of Devil Mountain and BeenInTop is 0 begin;
+		increase score by 8;
+		increase BeenInTop by 1;
+	end if.
+
+[ROOMS]
+Outskirts is a room. "You stand in the outskirts of the Forest of Fear, beside the carriage which brought you here in the first place. An intense feeling of evil emanates from within the forest, which lies to the north."
+Forest of Fear is north of Outskirts. "This is where you first entered the forest. The feeling of malignity is overwhelming. It is very quiet here. Not a single insect. Trails lead off to north, south, east and west."
+Glade is west of Forest of Fear. "You are in a little glade surrounded by little bushes. A trail continues east to west."
+Muddy Plain is west of  Glade. "You are in mud to your knees. Many saplings are scattered around the mud. An exit leads east."
+Southern Lake Shore is north of Forest of Fear. "You are south of a wide crocodile infested lake. It is hard to see anything through the mist coming up from the water. A trail leads south."
+Northern Lake Shore is north of Southern Lake Shore. "You are north of a wide crocodile infested lake. It is hard to see anything through the mist coming up from the water. You can go north to the edge of a volcano."
+Edge of Volcano is north of Northern Lake Shore. "You are standing on the edge of a deep volcano. [if birchchopped is 0]A small birch is standing near the edge of the volcano. You can go south back to the lake.[otherwise]You can go south back to the lake."
+Top of Birch is above Edge of Volcano. "You are sitting among the branches at the top of the birch. You have a beautiful view of the volcano from here."
+Ledge is below Edge of Volcano. "You are standing on a ledge in front of a cave carved into the volcano wall. Light emanates from the cave to the south.[if trunk of the birch tree is in Edge of Volcano] The birch is resting on the ledge, leading up to the edge of the volcano."
+Small Cave is south of Ledge. "You are in a small cave inhabited by a small dwarf. Sparse furniture is placed appropriately around the cave. Torches mounted on the walls light up the place in a cosy manner."
+Small cave is inside of Ledge.
+Dense Forest is east of Forest of Fear. "In this part of the forest the trees stand very close making it impossible to deviate from the forest trail, which curves from the west towards north."
+By Large Tree is north of Dense Forest. "You are in front of a very tall and wide tree. High up among the branches of the tree you notice a wooden platform. A trail leads south."
+Platform is above By Large Tree. "You are standing on a wooden platform high above the ground. A doorway leads into a cottage carved out of the trunk of the large tree."
+A room called Cottage is inside of Platform. "You are inside a cottage carved into the trunk of the tree. A large opening in the north wall serves as a window overlooking the misty lake below. There is a trapdoor in the floor in the middle of the room. An exit leads out."
+A room called On a Lawn is down of Cottage. "You are standing on a large green lawn filled with grass and yellow flowers. Here, at the middle of the lawn, there is the magical trapdoor from which you came. There is a bamboo hut to the southwest, a small wood to the south and a quicksand pool to the east."
+ Cottage is down of On a Lawn. up from Cottage is nowhere. up from On a Lawn is nowhere.
+A room called Bamboo Hut is southwest of On a Lawn. "You are inside a small bamboo hut. The exit lies northeast. The furniture is quite sparse, consisting of a chair, a table and a bed.". Bamboo Hut is inside of On a Lawn.
+Little Wood is south of On a Lawn. "You are in a little wood. Footprints can be noticed on the overgrown trail, indicating the presence of humans. Trails lead north and south."
+Clearing is south of Little Wood. "You are in a clearing within the little wood."
+West Bank of Quicksand is east of On a Lawn. "You are on the west bank of a large quicksand pool. You can walk north and south along the bank, or go west to the lawn."
+South End of West Bank is south of West Bank of Quicksand. "You are on the southern end of the bank of a large quicksand pool. Thick vegetation blocks your way further south. On the other side of the pool, a tree with long branches stand. One branch is projected over the quicksand pool. You can go back north along the bank."
+North End of West Bank is north of West Bank of Quicksand. "You are on the northern end of the bank of a large quicksand pool. Thick vegetation blocks your way further north. You can go back south along the bank."
+East Bank of Quicksand is a room. "You are on the east bank of a large quicksand pool. You can go east into the forest."
+Deep Forest is east of East Bank of Quicksand. "you are deep inside the magical part of forest of fear. Trails lead east, west and southeast."
+Beach is east of Deep Forest. "You are on a cosy beach. The sound of the waves add to the nice atmosphere."
+Down in a Hole is below Beach. "You are down in the hole that you have dug on the beach."
+Dark Hole is a room. "You cannot see anything. It is pitch black. You hear the sound of a beating dragon heart."
+By the Devil Mountain is southeast of Deep Forest. "You are in front of the Devil Mountain, the residence of the dragon. A path leads northwest into the forest and the entrance to the Dragon den lies south.". hidden is south of By the Devil Mountain. 
+Top of Devil Mountain is above By the Devil Mountain. "You are standing on top of the Devil Mountain. There is a chimney here."
+Hidden is a room.
+
+[DEFINITIONS]
+A room is either openair or closedair. a room is usually openair. Small cave is closedair. bamboo hut is closedair. Cottage is closedair. Bamboo Hut is closedair. Dark Hole is closedair.
+A room is either ringlok or notringlok. a room is usually notringlok. Ledge and edge of volcano and platform and by large tree and By the Devil Mountain and Top of Devil Mountain is ringlok.
+
+[CHARACTERS]
+Leon is a person in Outskirts. "Leon is standing nearby.". The description of leon is "Leon is a tall warrior, much like yourself. He is carrying a long rope.".
+the body of Leon is in hidden. "Leon's lifeless body lies sprawled on the ground.". The description of body is "[if body is held]Leons headless bloody body lies over your shoulder.[otherwise]Leons headless bloody body lies sprawled on the ground.".
+the friendly dwarf is a person in Small Cave. "A dwarf stands in the middle of the cave.". The description of the friendly dwarf is "The dwarf is well dressed and has a long white beard.".
+the archer in a tree is a person in Little Wood. "Far to the south you notice an archer high up in a tree, aiming in your direction.". the description of the archer is "He doesn't look very friendly.".
+
+[OBJECTS]
+the ocean water waves is scenery in Beach. The description of the ocean water waves is "The peaceful waves add to the nice atmosphere.".
+The beach sand is scenery in Beach. the description of beach sand is "The sand is white and beautiful.". 
+an object called the big hole is fixed in place in hidden. "There is a big hole in the sand here.". the description of the big hole is "the hole is big enough to hide in.".
+the dug hole is scenery in Down in a hole. "It is a large hole, hiding you from view.".
+
+the chimney is scenery in Top of Devil Mountain. "The chimney is round and made of stone. [if chimneystuffed is 0]There is smoke coming up from the chimney.[otherwise]There is not coming any smoke from the chimney anymore."
+
+the big devil mountain is scenery in By the Devil Mountain. "In front of you the big Devil Mountain rises. The mountain consists of a steep cliff wall and in the middle of it there is a huge entrance into the dragon den.[if chimneystuffed is 0] High above, there is smoke coming up from the Devil Mountain. You wonder if the mountain contains some sort of fireplace, leading smoke up through the mountain.".
+the entrance to dragon den is scenery in By the Devil Mountain. "[if chimneystuffed is 1]A lot of smoke is coming out of the dark entrance.[otherwise]Not much can be seen within the dark entrance.".
+
+The pile of twigs is in Clearing. the description of the pile of twigs is "Just a pile of twigs.".
+
+the trail is a backdrop in everywhere. "The trails around here curve through the landscape.".
+the gloomy forest is a backdrop in everywhere. "[if player is in Outskirts]The forest is covered in a gloomy glow.".
+
+the thick vegetation is a backdrop in South End of West Bank and in North End of West Bank. "The thick vegetation blocks further progress.".
+a quicksand pool is a backdrop in South End of West Bank and in North End of West Bank and in East Bank of Quicksand and in West Bank of Quicksand. "It is a 5 meter wide quicksand pool.".
+a projected tree branch is a backdrop in South end of West Bank and in East Bank of Quicksand. "The branch is projected approximately over the middle of the quicksand pool.".
+a rope hanging from a branch is fixed in place in hidden. "A rope is hanging from a branch above the center of the quicksand pool.". The description of the rope hanging from a branch is "Though you can't reach it from the edge of the pool, you should be able to jump onto it.".
+
+The small clearing is scenery in Clearing.
+
+The footprints are scenery in Little Wood. "The footprints lead south.".
+
+the furniture of heavy wood is scenery in bamboo hut. "The furniture consists of a chair, a table and bed. They are all made from heavy wood.".
+The heavy bed is scenery in bamboo hut. "The bed is made from heavy wood.".
+The heavy chair is scenery in bamboo hut. "The chair is made from heavy wood.". 
+The heavy table is scenery in bamboo hut. "The table is made from heavy wood.".
+
+a carved cottage doorway is scenery in Platform. a carved cottage doorway is fixed in place. the description of the carved cottage doorway is "There is a doorway in the cottage leading inside.".
+
+the green grass lawn is scenery in On a Lawn. "The lawn consists of green grass and yellow flowers.".
+the yellow flowers is scenery in On a Lawn. "The yellow flowers add to the peaceful atmosphere on the lawn.".
+
+a trapdoor is a backdrop in Cottage and in On a Lawn. "[if trapdooropen is 0]The trapdoor is closed.[otherwise]As you look down through the trapdoor you get dizzy. The trapdoor is definitely magical, leading to a world upside down of this world.".
+a window opening is scenery in Cottage. the description of the window opening is "From the window the crocodile infested lake far below can be seen. The northern shore is not so far from here, and it makes you wonder if you could jump out of the window and into the lake in order to reach the northern shore before the crocodiles reach you.".
+a deep lake water is scenery in Cottage. The description of the deep lake water is "From the window the crocodile infested lake far below can be seen. The northern shore is not so far from here, and it makes you wonder if you could jump out of the window and into the lake in order to reach the northern shore before the crocodiles reach you.".
+a inner cottage is scenery in Cottage. "This is a nice cottage, ideal for holidays if it weren't for the fact that it is situated in the Forest of Fear.".
+
+the wooden carriage is scenery in outskirts. The description of the wooden carriage is "The empty carriage is drawn by a black horse.".
+the horse is scenery in outskirts. The description of the horse is "It is a big strong black stallion.".
+
+the huge basket is a enterable container in By Large Tree. "[if huge basket is in By Large Tree]There is a huge basket here.[otherwise]There is a huge basket hanging beside the platform.". The description of the huge basket is "The basket is huge, huge enough to enter. A string extends from the basket and stretches far up into the tree tops above the platform.[if huge basket is in By Large Tree] The basket is tilted slightly, as if something is underneath it.[otherwise] You notice a hook stuck to the bottom of the basket.".
+the basket string is a part of huge basket. The description of the basket string is "The string stretches from the bottom of the basket and high up through the treetops.".
+the metal hook is a part of the huge basket. The description of the hook is "The metal hook is firmly attached to the bottom of the basket.".
+the blade of a spade is in the basket. the description of the blade of a spade is "It should be possible to make a decent spade with this blade, if an appropriate branch is found.".
+the tall wide tree is scenery in By Large Tree. "The trunk is about 5 meters in diameter, whereas the height is harder to determine due to the branches of adjacent trees. The tree is definitely tall. You cannot climb the large tree, since there are no branches within easy reach.".
+the wooden platform is a backdrop in By Large Tree and in Platform.  the description of the wooden platform is "The wooden platform is placed on the south side of the tree.".
+the large tree trunk is scenery in Platform. "This tree is huge. The trunk is about 5 meters in diameter and the height is impossible to determine due to surrounding trees.".
+
+a dangling string is in Dense Forest. "A string dangles down from the treetops.". the description of the dangling string is "The string dangles down from somewhere high up in the tree tops. The string has a certain magical aura. Magical strings tend to be strong as rope and cannot be cut.".
+a tied string is fixed in place in hidden. "The string from the treetops is tied to a nearby tree.". The description of the tied string is "The string is currently tied to a tree. The string has a certain magical aura. Magical strings tend to be strong as rope and cannot be cut.".
+a bare tree is scenery in Dense Forest. "Just one of many bare trees surrounding the area.".
+
+the bare plain is scenery in Muddy Plain. "There is mud everywhere you look. Many saplings are scattered around the mud.".
+the saplings is scenery in Muddy Plain. "They look sick, as if they have not grown for a while.".
+the mud is fixed in place in Muddy Plain. "There is mud everywhere you look." The description of the mud is "The mud is wet and soft but will harden quickly if you dip your hands in it.".
+the muddy branch is in the mud. The description of the branch is "A strong branch, length about 1 meter. The branch is covered in a protective layer of dry mud.".
+
+the little glade is scenery in Glade. "The little glade is surrounded by little bushes.".
+the little bushes is scenery in Glade. "Especially one odd looking bush catches your attention.".
+the odd looking bush is fixed in place in Glade. "There is an odd looking bush here.".
+The description of the bush is "It is an odd looking bush with poisonous thorns. [if axetaken is 0]Stuck beneath the bush is an axe.".
+the thorns are scenery in Glade. the description of the thorns is "The thorns look very poisonous.".
+the stuck axe is scenery in Glade. "The axe look sharp. Unfortunately it is covered by poisonous thorns.".
+the sharp axe is in Hidden. Description of the sharp axe is "The axe looks strong and sharp.".
+
+some crocodiles is a backdrop. It is in southern lake shore and northern lake shore. the description of the crocodiles is "Several dangerous crocodiles swim around in the lake.[if satisfied is 0] The crocodiles look very hungry![otherwise] The crocodiles appear to be satisfied from the meal you gave them.".
+the mist is a backdrop. It is in southern lake shore and northern lake shore. the description of the mist is "It is hard to see anything through the mist.".
+the dark water is a backdrop. the dark water is in southern lake shore and northern lake shore. "It is hard to see anything through the dark water. There are several crocodiles on the surface though.".
+the dark lake is a backdrop. the dark lake is in southern lake shore and northern lake shore.  the description of the dark lake is "Several dangerous crocodiles swim around in the lake.[if satisfied is 0] The crocodiles look very hungry![otherwise] The crocodiles appear to be satisfied from the meal you gave them.".
+the wooden canoe is an enterable container in northern lake shore. "There is a wooden canoe lying on the lake shore.". the wooden canoe is fixed in place. the description of the wooden canoe is "The wooden canoe seems functional and there is a single-bladed paddle in it.". the paddle is a part of the wooden canoe. the description of the paddle is "It is a single-bladed wooden paddle.".
+
+the small birch tree is scenery in edge of volcano.  "It is a small birch, which is leaning slightly over the volcano edge.".
+the trunk of the birch tree is fixed in place in hidden. "The trunk of the chopped birch can be seen sticking up over the edge of the volcano.". the description of the trunk of the birch tree is "The entire birch tree is resting on the ledge, providing a means of reaching the ledge safely.".
+the top of the birch tree is scenery in Top of Birch. "The birch is leaning slightly over the edge of the volcano, giving you a magnificent view.". 
+the birch resting on the ledge is scenery in hidden. "The treetop of the birch is resting on the ledge.".
+the large volcano is a backdrop in Top of birch and in ledge and in edge of volcano. "The volcano crater is huge. [if player is not in ledge]You stare over the edge into the extinct volcano. You notice a small ledge some meters down. The ledge is lit by light emanating from a cave carved into the volcano wall.".
+the small ledge is a backdrop in Ledge and in Edge of Volcano and in Top of Birch. "The ledge is lit by light emanating from a cave carved into the volcano wall.".
+the carved cave opening is scenery in Ledge. "Not much can be seen through the small cave opening.".
+
+The dwarf's cave is scenery in Small Cave. "The small cave is equipped with a sparse selection of furniture. It is lit from torches mounted on the walls, resulting in a cosy atmosphere.".
+The dwarf's furniture is scenery in Small Cave. "The sparse selection of furniture adds to the cosy atmosphere of the cave.".
+The dwarf's torches is scenery in Small Cave. "A few torches light up the cave in a cosy manner.".
+
+the dragon heart is scenery in Dark Hole. the description of the dragon heart is "It is too dark to see anything!".
+
+the hands is a kind of thing. The hands is part of every person. The description of hands is "[if dirty is 0]They are nice and clean.[otherwise]They are covered in a thick layer of dry mud.".
+the handy spade is in hidden. The description of handy spade is "The spade you have made is really handy!".
+the long rope is carried by Leon. the description of the rope is "It is a strong long rope.".
+the dangling rope is fixed in place in hidden. "There is a rope dangling here from above.".
+the tied rope is fixed in place in hidden. "[if the tied rope is in Edge of Volcano]Tied to the birch is a rope, which is dangling over the edge of the volcano.[end if][if the tied rope is in By Large Tree]There is a rope here tied to the hook underneath the basket.[end if][if the tied rope is in Platform]There is a rope dangling from a hook in the bottom of the basket.[end if]".
+a long sword is held by player. the description of long sword is "Its a long sharp sword.".
+the magical ring is in hidden. The description of the magical ring is "The magical ring has beautiful engravings all over.".
+the engravings is a part of the magical ring. the description of the engravings is "The engravings are beautiful but they do not appear to have any meaning.".
+the long spear is in hidden. The description of the long spear is "It is a long strong spear. An effective weapon.".
+
+[VALUES (excluding score related values)]
+birchchopped is initially 0.
+axetaken is initially 0.
+dirty is initially 0.
+satisfied is initially 0.
+pulled is initially 0.
+talkdwarf is initially 0.
+trapdooropen is initially 0.
+spearfound is initially 0.
+chimneystuffed is initially 0.
+dragoncount is initially 0.
+temp is initially 0.
+
+[ACTIONS]
+Vocabing is an action applying to nothing.
+Rowing is an action applying to nothing.
+Orowing is an action applying to a thing.
+Drowing is an action applying to a thing.
+Dipping is an action applying to two things. 
+Washing is an action applying to a thing.
+Making is an action applying to a thing.
+Untying is an action applying to a thing.
+Talking is an action applying to a thing.
+Outjumping is an action applying to a thing.
+Onjumping is an action applying to a thing.
+Ojumping is an action applying to a thing.
+Digging is an action applying to nothing.
+Odigging is an action applying to a thing.
+
+Swimming is an action applying to nothing.
+Nswimming is an action applying to nothing.
+Sswimming is an action applying to nothing.
+Eswimming is an action applying to nothing.
+Wswimming is an action applying to nothing.
+Oswimming is an action applying to a thing.
+Understand "swim" as swimming.
+Understand "swim n/north" as Nswimming.
+Understand "swim s/south" as Sswimming.
+Understand "swim e/east" as Eswimming.
+understand "swim w/west" as Wswimming.
+understand "swim nw/northwest" as Wswimming.
+understand "swim ne/northeast" as Eswimming.
+understand "swim se/southeast" as Eswimming.
+understand "swim sw/southwest" as Wswimming.
+Understand "swim [something]" as Oswimming.
+Understand "swim in/across [something]" as Oswimming.
+
+Understand "vocab" as vocabing.
+Understand "vocabulary" as vocabing.
+Understand "words" as vocabing.
+Understand "hide in [something]" as entering.
+Understand "dig hole/ground" as digging.
+Understand "dig a/the hole/ground" as digging.
+Understand "dig" as digging.
+Understand "dig [something]" as Odigging.
+Understand "jump onto/on/at [something]" as Onjumping.
+Understand "jump out of [something]" as Outjumping.
+Understand "jump through [something]" as Outjumping.
+Understand "jump in/into [something]" as Outjumping.
+Understand "jump in to [something]" as Outjumping.
+Understand "jump [something]" as Ojumping.
+Understand "row" as rowing.
+Understand "paddle" as rowing.
+Understand "sail" as rowing.
+Understand "row [something]" as Orowing.
+Understand "paddle [something]" as Orowing.
+Understand "sail [something]" as Orowing.
+Understand "row [a direction] " as Drowing.
+Understand "paddle [a direction] " as Drowing.
+Understand "sail [a direction] " as Drowing.
+Understand "talk to [something]" as talking.
+Understand "untie [something]" as untying.
+Understand "dip [something] in [something]" as dipping. 
+Understand "wash [something]" as washing. 
+Understand "make [something]" as making.
+Understand "repair [something]" as making.
+Understand "fix [something]" as making.
+Understand "climb [a direction]" as going.
+Understand "climb down [something]" as climbing.
+Understand "throw [something] over/around [something]" as throwing it at.
+Understand "stab [something]" as cutting.
+Understand "give [something] to [something]" as giving it to.
+
+Understand "Toke" as the friendly dwarf.
+Understand "trails" as trail.
+Understand "path" as trail.
+Understand "trees" as bare tree.
+Understand "branches" as top of the birch tree.
+Understand "outskirts" as gloomy forest.
+
+[disable brief, superbrief and verbose]
+Understand nothing as preferring abbreviated room descriptions.
+Understand nothing as preferring unabbreviated room descriptions.
+Understand nothing as preferring sometimes abbreviated room descriptions.
+
+[WHEN PLAY BEGINS]
+when playing begins:
+	say "Finally you arrive at the outskirts of the forest. Both you and the queen's chauffeur Leon step down from the carriage. As you alight, you clearly remember the words of Queen Drana: 'Please return with the Dragon Diamond...' She did not need to finish her sentence with the words '...if you want to live.' You know her too well.
+
+(New players: type ABOUT).".
+
+[CHECKS]
+check Ojumping:
+	say "When jumping, please specify if you want to jump INTO something, jump ONTO something, jump THROUGH something or jump OUT OF something.".
+
+check vocabing:
+	say "OUT OF WORLD - COMMANDS:[line break]
+Save, Restore, Undo, Quit, Restart, Vocab, Help, Score
+
+INVENTORY: I
+
+DIRECTIONS:[line break]
+N, S, E, W, NE, NW, SE, SW, Up, Down, In, Out
+
+USEFUL VERBS:[line break]
+Climb, Chop, Dig, Dip, Drop, Enter, Examine(X), Fight, Fix, Get, Jump, Kill, Look (under), Make, Paddle,  Row, Sail, Swim,  Take, Talk, Throw, Tie, Untie".
+	
+check Odigging:
+	if noun is beach sand, try digging;
+	if noun is not beach sand, say "You can't dig that.".
+check digging:
+	if player is not in Beach, say "The ground is too hard to dig here.";
+	if  player is in Beach begin;
+		if big hole is in Beach, say "You have already dug a big hole in the sand.";
+		if big hole is in hidden begin;
+			if handy spade is not held, say "It would take forever using your hands. You need a spade to dig with.";
+			if handy spade is held begin;
+				say "You dig a hole large enough for you to go down in.";
+				move big hole to Beach;
+				increase score by 8;
+			end if;
+		end if;
+	end if.		
+
+check Onjumping:
+	if noun is not rope hanging from branch and noun is not projected branch, say "You cannot jump onto that.";
+	if noun is projected branch, say "The branch is too high up to jump onto.";
+	if noun is rope hanging from branch begin;
+		if body of leon is held, say "You cannot jump with a body on your shoulder!";
+		now temp is 0;
+		if player is in South End of West Bank and body of leon is not held begin;
+			say "You take a few steps back, then you run and take a big leap across the quicksand pool, where you manage to catch the dangling rope and swing the last meters across the pool and land safely on the other side.";
+			move rope hanging from branch to East Bank of Quicksand;
+			now temp is 1;
+			move player to East Bank of Quicksand;
+		end if;
+		if player is in East Bank of Quicksand and temp is 0 begin;
+			say "You take a few steps back, then you run and take a big leap across the quicksand pool, where you manage to catch the dangling rope and swing the last meters across the pool and land safely on the other side.";
+			move rope hanging from branch to South End of West Bank;
+			move player to South End of West Bank;
+		end if;
+	end if.
+		
+check Outjumping:
+	if noun is not window opening and noun is not deep lake water, say "You cannot jump into that!";
+	if noun is window opening or noun is deep lake water begin;
+		if wooden canoe is in Southern lake shore, say "Since you now have the canoe on the southern lake shore now, there is no need to jump into the lake from here.";
+		if wooden canoe is in northern lake shore begin;
+			say "You jump out of the window and land in the deep water, close to the northern bank. From here you manage to swim ashore before the crocodiles can smell you.";
+			move player to Northern Lake Shore;
+		end if;
+	end if.
+
+check Orowing:
+	if noun is canoe, try rowing;
+	if noun is dark water, try rowing;
+	if noun is dark lake, try rowing;
+	if noun is paddle, try rowing;
+	if noun is not canoe and noun is not dark water and noun is not dark lake and noun is not paddle, say "You can't row that.".
+check rowing:
+	if the wooden canoe is not visible, say "There is no boat here.";
+	if the wooden canoe is visible begin;
+		now temp is 0;
+		if wooden canoe is in southern lake shore begin;
+			say "You push the canoe out into the water and get in. You paddle slowly across the water trying not to catch the attention of the crocodiles. Finally you reach the opposite shore, where you drag the canoe onto land.";
+			move canoe to northern lake shore;
+			move player to northern lake shore;
+			now temp is 1;
+		end if;
+		if wooden canoe is in northern lake shore and temp is 0 begin;
+			say "You push the canoe out into the water and get in. You paddle slowly across the water trying not to catch the attention of the crocodiles. Finally you reach the opposite shore, where you drag the canoe onto land.";
+			move canoe to southern lake shore;
+			move player to southern lake shore;
+		end if;
+	end if.
+
+check Nswimming:
+	if player is not in southern lake shore, say "There is no water in that direction.";
+	if player is in southern lake shore, try swimming.
+check Sswimming:
+	if player is not in northern lake shore, say "There is no water in that direction.";
+	if player is in northern lake shore, try swimming.
+check Eswimming:
+	if player is not in Beach, say "There is no water in that direction.";
+	if player is in Beach, say "Unfortunately you are not here on holiday. You need to find the Dragon Diamond.".
+check Wswimming:
+	if player is not in hidden, say "There is no water in that direction.".
+check Oswimming:
+	if noun is not lake and noun is not water, say "You can't swim in that!";
+	if noun is lake or noun is water, try swimming.
+check swimming:
+	if wooden canoe is visible, say "No reason to swim now you have found a canoe.";
+	if player is in Beach, say "You are not here on holiday! You need to find the Dragon Diamond!";
+	if player is not in Beach and player is not in southern lake shore and player is not in northern lake shore and player is not in canoe, say "There is no water here.";
+	if player is in southern lake shore and canoe is not visible begin;
+		if satisfied is 0, say "The crocodiles look far too hungry to run that risk!";
+		if satisfied is 1 begin;
+			say "You begin to cross the lake. To begin with, the satisfied crocodiles seem to ignore you. However, as you begin to reach to opposite shore, the crocodiles get nearer, as if your smell has made them hungry again. Luckily, you manage to get ashore before the crocodiles can catch you.";
+			now satisfied is 0;
+			move player to northern lake shore;
+		end if;
+	end if.
+
+check talking:
+	if noun is dwarf begin;
+		if talkdwarf is 1, say "You chat for a while, but it is time for you to leave.";
+		if talkdwarf is 0 begin;
+			say "You say hello to the dwarf and he offers you a seat in his humble home. You quickly engage in a long interesting conversation. The dwarf, whose name is Toke, knows a lot about the forest and he warns you of the dangers ahead. Specifically he mentions that the Dragon Diamond is the eye of the dragon and that you need to kill the dragon in order to obtain the fabled Dragon Diamond. Toke hands you a ring while he says: 'This ring will allow you to fly high but not wide. If you need to reach a high place, just wear this ring.'";
+			say "[line break]";
+			say "You thank Toke and prepare to leave.";
+			now talkdwarf is 1;
+			move magical ring to player;
+		end if;
+	end if;
+	if noun is Leon, say "In an aggressive tone, Leon says 'Your job is to get the diamond. My job is to wait here. I am NOT going into that forest!'";
+	if noun is archer, say "'Just stay away!' the archer shouts.";
+	if noun is not Leon and noun is not dwarf and noun is not archer, say "You can't talk to that!".
+
+check dipping:
+	if the noun is hands and the second noun is not hands and the second noun is not the mud, say "You cannot dip your hands in the [second noun]." instead;
+	if the second noun is not the mud and the second noun is not hands, say "You cannot dip [the noun] in [the second noun]." instead;
+	if the second noun is hands, say "You cannot dip anything in your hands." instead;
+	if the noun is not hands and second noun is the mud, say "You gain nothing by dipping [the noun] in the mud." instead;
+	if the noun is hands and second noun is the mud and dirty is 1 begin;
+		say "You have already done that.";
+	end if;
+		if the noun is hands and second noun is the mud and dirty is 0 begin;
+		say "You dip your hands into the mud and the mud hardens leaving a thick layer of dry mud on your hands.";
+		increase dirty by 1;
+	end if.
+
+check washing:
+	if player is not in southern lake shore, say "There is no water here.";
+	if player is in southern lake shore begin;
+		if the noun is hands begin;
+			say "you wash your hands in the lake.";
+			now dirty is 0;
+		end if;
+		if the noun is not hands, say "You wash [the noun] in the lake but it doesn't get much cleaner.";
+	end if.
+
+check making:
+	if noun is not blade of a spade, say "[The noun] does not need repairing.";
+	if noun is blade of a spade begin;
+		if blade of a spade is not held, say "You are not holding a spade blade.";
+		if blade of a spade is held and muddy branch is not held, say "You need an appropriate branch to fix the spade.";
+		if blade of a spade is held and muddy branch is held begin;
+			say "You manage to attach the blade of a spade decently to the branch and voilà,  you have now a spade!";
+			move muddy branch to hidden;
+			move blade of a spade to hidden;
+			move handy spade to player;
+			increase score by 5;
+		end if;
+	end if.
+
+check untying:
+	if noun is hands, say "But your hands are not tied!";
+	if noun is dangling string, say "But the string is not tied to anything!";
+	if noun is tied string begin;
+		say "You untie the string, and once again you hold the dangling string in your possession.";
+		move tied string to hidden;
+		move dangling string to player;
+	end if;
+	if noun is tied rope begin;
+		say "You untie the rope and take it with you.";
+		move tied rope to hidden;
+		move the rope to player;
+		move dangling rope to hidden;
+	end if;
+	if noun is not hands and noun is not dangling string and noun is not tied string and noun is not tied rope, say "You cannot untie that.".
+
+[INSTEAD]
+instead of examining player, say "You are Bash the Barbarian, a feared warrior deeply in depth to the evil queen Drana.".
+
+instead of tying the muddy branch to the blade of a spade, try making blade of a spade.
+instead of tying the blade of a spade to the muddy branch, try making blade of a spade.
+
+instead of entering the dark lake, try swimming.
+instead of entering the dark water, try swimming.
+instead of drinking the dark water, say  "The water smells funny, so you decide not to drink the water.".
+instead of smelling the dark water, say "The water smells funny.".
+
+instead of taking the mud, say "You do not need to carry mud around.".
+instead of dropping sword, say "Don't leave your trusty sword. You will definitely need it.".	
+instead of inserting the  sword into something, say "Don't leave your trusty sword. You will definitely need it.".	
+
+instead of taking sand, say "the white sand runs through your fingers.".
+instead of going down from beach:
+	if big hole is in beach, move player to Down in a Hole;
+	if big hole is not in beach, say "You can't go that way.".
+instead of entering the big hole, try going down.
+
+instead of climbing the tall wide tree, say "There are no branches within easy reach.".
+instead of cutting the basket string:
+	say "The string has a magical aura, indicating that it cannot be cut.".
+instead of climbing the basket string:
+	say "The string is much too smooth to climb.".
+
+instead of going south from Little Wood:
+	if archer in a tree is in Little Wood, say "You hear a whistling sound as an arrow hits the ground right in front of your feet. 'One step closer and you are dead!' shouts the archer from a tree in the south direction.";
+	if archer in a tree is not in Little Wood, move player to Clearing.
+Instead of attacking the archer:
+	¨say "How?".	
+Instead of inserting the long spear into the archer, try throwing the long spear at archer.
+
+instead of answering Leon that "hello/hi":
+	try talking Leon.
+instead of asking Leon to try going north:
+	try talking Leon.
+instead of asking Leon to try entering carriage:
+	say "In an agressive tone, Leon says 'I stay here until you return with the diamond!'".
+
+instead of looking under the heavy bed:
+	if spearfound is 1, say "You find nothing of interest.";
+	if spearfound is 0 begin;
+		say "Under the bed you find a long spear. You take it with you.";
+		move long spear to player;
+		now spearfound is 1;
+		increase score by 8;
+	end if.
+instead of searching the heavy bed:
+	if spearfound is 1, say "You find nothing of interest.";
+	if spearfound is 0 begin;
+		say "Under the bed you find a long spear. You take it with you.";
+		move long spear to player;
+		now spearfound is 1;
+		increase score by 8;
+	end if.
+
+instead of entering the carved cottage doorway:
+	say " ";
+	move player to Cottage.
+
+instead of inserting something into the carved cottage doorway, say "If you want to put anything inside the cottage, enter the cottage and drop it.".
+
+instead of entering the trapdoor:
+	say " ";
+	try going down.
+instead of opening the trapdoor:
+	if trapdooropen is 1, say "The trapdoor is already open!";
+	if trapdooropen is 0 begin;
+		say "okay, you open the trapdoor.";
+		now trapdooropen is 1;
+	end if.
+instead of closing the trapdoor:
+	if trapdooropen is 0, say "The trapdoor is already closed!";
+	if trapdooropen is 1 begin;
+		say "okay, you close the trapdoor.";
+		now trapdooropen is 0;
+	end if.
+instead of going down from Cottage:
+	if trapdooropen is 0, say "You cannot go down as long as the trapdoor is closed!";
+	if trapdooropen is 1, move player to On a Lawn.
+instead of going down from On a Lawn:
+	if trapdooropen is 0, say "You cannot go down as long as the trapdoor is closed!";
+	if trapdooropen is 1, move player to Cottage.
+
+instead of going south from By the Devil Mountain, say "[if chimneystuffed is 1]A lot of smoke is coming from the entrance. You would suffocate if you go in there.[otherwise]It would be suicide to go into the dragon den while the dragon is there.".
+instead of going up from By the Devil Mountain, say "The mountain is much too steep and slippery to climb.".
+instead of climbing the big Devil Mountain, try going up.
+instead of entering the big Devil Mountain, try going south.
+instead of entering the entrance to dragon den, try going south.
+
+instead of going down from Top of Devil Mountain, say "The mountain is much to steep and slippery to climb.".
+
+instead of wearing ring:
+	if player is not in openair, say "You should not wear this ring when you are inside something, since it makes you fly.";
+	if player is in openair begin;
+		move ring to player;
+		if player is not in ringlok, say "You fly high up into the air, then you come down again and land exactly on the same spot. You remember Tokes words: 'You can fly high but not wide'. You remove the ring again.";
+		now temp is 0;
+		if player is in Ledge begin;
+			say "You put on the ring and fly up through the volcano, landing safely at the edge. You remove the ring again.";
+			move player to edge of volcano;
+			now temp is 1;
+		end if;
+		if player is in edge of volcano and temp is 0 begin;
+			say "You put on the ring and fly down to the ledge. You remove the ring again.";
+			move player to ledge;
+		end if;
+		now temp is 0;
+		if player is in Platform begin;
+			say "You put on the ring and fly down through the trees. You safely land on the ground and remove the ring again.";
+			move player to By Large Tree;
+			now temp is 1;
+		end if;
+		if player is in By large tree and temp is 0 begin;
+			say "You put on the ring and fly up through the trees. You safely land on the platform and remove the ring again.";
+			move player to Platform;
+		end if;
+		now temp is 0;
+		if player is in By the Devil Mountain begin;
+			say "You put on the ring and fly up to the top of the Devil Mountain. You safely land on its top and remove the ring again.";
+			move player to Top of Devil Mountain;
+			now temp is 1;
+		end if;
+		if player is in Top of Devil Mountain and temp is 0 begin;
+			say "You put on the ring and fly down from the Devil Mountain. You safely land on the ground and remove the ring again.";
+			move player to By the Devil Mountain;
+		end if;
+	end if.
+
+instead of attacking the dwarf, say "You have no intention of hurting the friendly dwarf.".
+instead of answering the dwarf that "hello/hi":
+	if talkdwarf is 1, say "You have already said hello once.";
+		if talkdwarf is 0 begin;
+			say "You say hello to the dwarf and he offers you a seat in his humble home. You quickly engage in a long interesting conversation. The dwarf, whose name is Toke, knows a lot about the forest and he warns you of the dangers ahead. Specifically he mentions that the Dragon Diamond is the eye of the dragon and that you need to kill the dragon in order to obtain the fabled Dragon Diamond. Toke hands you a ring while he says: 'This ring will allow you to fly high but not wide. If you need to reach a high place, just wear this ring.'";
+			say "[line break]";
+			say "You thank Toke and prepare to leave.";
+			now talkdwarf is 1;
+			move magical ring to player;
+		end if;
+
+instead of asking leon for long rope:
+	say "Leon shouts 'If you want the rope, you will have to fight me! Come on if you dare!'".
+
+instead of asking leon about "rope":
+	say "Leon shouts 'If you want the rope, you will have to fight me! Come on if you dare!'".	
+	
+instead of attacking leon:
+	if long sword is not held, say "You better pick up your sword before attacking him. He seems quite agressive!";
+	if long sword is held begin;
+		say "You raise your sword and enter into a long sword battle with Leon. After a long and exhausting battle, you finally manage to swing your sword against Leons neck before he can react. While his head and sword fly in a big curve into the thick vegetation, his body, and the rope Leon was holding, fall to the ground.";
+		move Leon to hidden;
+		increase score by 7;
+		move the body of Leon to Outskirts;	
+		move the long rope to Outskirts;
+	end if.
+
+instead of taking axe:
+	if axetaken is 0 and dirty is 0 begin;
+	say "The poisonous thorns are in the way.";
+	end if;
+	if axetaken is 0 and dirty is 1 begin;
+	say "Due to the protective layer of mud on your hands, you manage to drag the axe out through the thorns and take it with you.";
+	Move sharp axe to Glade;
+	Move stuck axe to hidden;
+	increase axetaken by 1;
+	move sharp axe to player;
+	increase score by 1;
+	end if.
+
+instead of looking under huge basket:
+	say "You look under the basket and find a hook stuck to the bottom of the basket.".
+	
+instead of taking the huge basket:
+	say "The basket is too bulky to carry. ".
+
+instead of climbing the dangling string, say "The string is too smooth to climb.".
+instead of cutting the dangling string, say "The string has a certain magical aura. Magical strings tend to be strong as rope and cannot be cut.".
+instead of pulling the dangling string:
+	if pulled is 1, say "You have already pulled the string as much as you can.";
+	if pulled is 0 begin;
+		say "You take a good hold of the string and begin to pull. As you pull the string, it feels like you are raising something heavy somewhere else. You pull the string as much as you can. Whatever you are raising must now be lifted many meters above the ground.";
+		move dangling string to player;
+		now pulled is 1;
+		move huge basket to platform;
+		if tied rope is in By Large Tree begin;
+			move tied rope to Platform;
+			move dangling rope to By Large Tree;
+		end if;
+	end if.
+instead of tying the dangling string to bare tree:
+	if pulled is 0, say "The string cannot reach around the tree at the moment.";
+	if pulled is 1 begin;
+		say "You tie the string to a nearby tree.";
+		move dangling string to hidden;
+		move tied string to Dense Forest;
+	end if.
+instead of taking tied string, say "Try untying it first.".
+
+instead of pulling tied rope, say "You achieve nothing by pulling a tied rope.".
+instead of pushing tied rope, say "You achieve nothing by pushing a tied rope.".
+instead of taking tied rope, say "Try untying it first.".
+instead of climbing tied rope, try going down.
+instead of climbing dangling rope, try going up.
+instead of pulling dangling rope, say "You pull it but nothing happens.".
+instead of taking dangling rope, say "If you climb the dangling rope, you might be able to untie it once you get to the top.".
+instead of untying dangling rope, say "If you climb the dangling rope, you might be able to untie it once you get to the top.".
+instead of pushing dangling rope, say "The rope sways from side to side.".
+
+instead of putting the long rope on the hook:
+	say "You tie the rope to the hook and drop the rope beside the big basket.";
+	move the long rope to hidden;
+	if the huge basket is in By Large Tree, move tied rope to By Large Tree;
+	if the huge basket is in Platform begin;
+		move tied rope to Platform;
+		move dangling rope to By Large Tree;
+	end if.
+instead of putting something on the hook, say "That doesn't fit onto the hook.".
+
+instead of tying the long rope to the hook:
+	say "You tie the rope to the hook and drop the rope beside the big basket.";
+	move the long rope to hidden;
+	if the huge basket is in By Large Tree, move tied rope to By Large Tree;
+	if the huge basket is in Platform begin;
+		move tied rope to Platform;
+		move dangling rope to By Large Tree;
+	end if.
+	
+instead of tying long rope to small birch:
+	say "You tie the rope to the birch and let it dangle over the edge of the volcano.";
+	move long rope to hidden;
+	move dangling rope to Ledge;
+	move tied rope to Edge of Volcano.
+
+instead of cutting the top of the birch tree, say "None of the branches in this tree appear useful.".
+instead of pushing the trunk of the birch tree, say "The trunk of the birch tree seems to be in an optimal position for climbing down, so you better not touch it.".
+instead of pulling the trunk of the birch tree, say "The trunk of the birch tree seems to be in an optimal position for climbing down, so you better not touch it.".
+
+instead of cutting the small birch:
+	if the sharp axe is not carried by player, say "You need a sharp object to do that.";
+	if the sharp axe is held begin;
+		if the tied rope is visible, say "you better untie the rope first, so you don't loose it.";
+		if the tied rope is not visible begin;
+			say "You manage to chop the birch in a few strokes with the sharp axe. The birch falls into the volcano. No, it is stopped by something! Looking into the volcano you see that the treetop of the birch is stopped by a ledge. It should now be safe to climb down the birch to the ledge...";
+			move small birch to hidden;
+			move trunk of the birch tree to edge of volcano;
+			move the birch resting on the ledge to Ledge;
+			now birchchopped is 1;
+		end if;
+	end if.
+
+instead of going down from edge of volcano:
+	if the trunk of the birch is not visible and the tied rope is not visible, say "It is much too dangerous trying to climb down the walls of the volcano.";
+	if the trunk of the birch is visible, move player to Ledge;
+	if the tied rope is visible, move player to Ledge.
+
+instead of climbing the trunk of the birch, try going down.
+instead of climbing the the small birch, try going up.
+instead of climbing the birch resting on the ledge, try going up.
+instead of climbing the top of the birch tree, try going down.
+instead of entering the carved cave opening, try going south.
+
+instead of entering volcano when player is in Edge of Volcano, try going down.
+instead of going up from edge of volcano:
+	if small birch is invisible, say "You chopped the birch, so there is no going up here any more.";
+	if small birch is visible begin, move player to top of birch.
+
+instead of taking body of leon:
+	say "With big effort you manage to sling Leon's body over your shoulder.";
+	move body of leon to player.
+
+instead of taking the long rope:
+	if the long rope is held by Leon, say "As you try to take the rope from Leon, he steps away from you and says 'If you want the rope you will have to fight me!'";
+	if the long rope is not held by Leon begin;
+		say "Taken.";
+		move long rope to player;
+	end if.
+	
+instead of inserting something (called M) into dark lake:
+	if M is body begin;
+		say "You manage to throw Leons heavy body into the lake. The crocodiles fight about their new meal, but in the end there is enough to satisfy everyone.";
+		move body to hidden;
+		now satisfied is 1;
+	end if;
+	if M is hands, say "You can't drop part of yourself."; 
+	if M is not body and M is not hands, say "You don't want to loose the [M] so you decide not to.".
+instead of giving something to something which is not a person:
+	if second noun is not crocodiles, say "You can only do that to something animate.";
+	if second noun is crocodiles begin;
+		if noun is not body of leon, say "I doubt the crocodiles are interested in that.";
+		if noun is body of Leon, try inserting the body of Leon into dark lake;
+	end if.
+
+instead of going north from Southern Lake Shore:
+	say "You can't walk on water.".
+instead of going south from Northern Lake Shore:
+	say "You can't walk on water.".
+instead of taking the paddle, say "The paddle is only useful in connection with the canoe, so just leave it in the canoe.".
+instead of taking the wooden canoe:
+	say "The canoe is much too bulky to carry around.".
+instead of attacking the crocodiles, say "Several crocodiles are swimming around in the lake. It would be suicide to attack them in the water.".
+instead of pushing the canoe, say "The canoe is fine where it is for now.".
+instead of pulling the canoe, say "The canoe is fine where it is for now.".
+
+instead of going up from By Large Tree:
+	if dangling rope is in By Large Tree and body of leon is not held, move player to platform;
+	if dangling rope is in By Large Tree and body of leon is held, say "You cannot climb the rope while you are holding Leon's body.";
+	if dangling rope is not in By Large Tree, say "There are no branches within reach.".
+instead of going down from Platform:
+	if dangling rope is in By Large Tree and body of leon is not held, move player to By Large Tree;
+	if dangling rope is in By large Tree and body of leon is held, say "You cannot climb down the rope while you are holding Leon's body.";
+	if dangling rope is not in By Large Tree, say "There is no way down from here.".
+	
+instead of dropping the dangling string:
+	if dangling string is not held, say "But you are not holding the string!";
+	if dangling string is held begin;
+		say "You let go of the dangling string.";
+		move dangling string to Dense Forest;
+		now pulled is 0;
+		move huge basket to By Large Tree;
+		if dangling rope is in By Large Tree begin;
+			move dangling rope to hidden;
+			move tied rope to By Large Tree;
+		end if;
+	end if;	
+
+instead of inserting something into the quicksand pool, say "You don't want to loose [the noun], so you decide not to.".
+
+instead of throwing the long rope at projected tree branch:
+	say "Before throwing the rope you tie a loop. You manage to catch the branch with the loop and you let the rope dangle over the quicksand pool.";
+	move the rope hanging from a branch to South End of West Bank;
+	increase score by 8;
+	move the long rope to hidden.
+instead of taking the rope hanging from a branch, say "You can't reach it from here. The quicksand is in the way.".
+instead of pushing the rope hanging from a branch, say "You can't reach it from here. The quicksand is in the way.".
+instead of pulling the rope hanging from a branch, say "You can't reach it from here. The quicksand is in the way.".
+
+instead of inserting [something] into the chimney:
+	if noun is not pile of twigs,	say "You would loose [the noun] if you did, so you decide not to do it.";
+	if noun is pile of twigs begin;
+		say "You throw the twigs in the chimney. No more smoke is coming up from the chimney now. It seems as you are trying to smoke out the dragon! So you better get away from the Devil Mountain immediately before the dragon finds you! ";
+		move pile of twigs to hidden;
+		now chimneystuffed is 1;
+		now dragoncount is 0;
+		increase score by 8;
+	end if.
+
+instead of dropping something in Dark hole, say "You better not drop anything in this darkness. You will not be able to find it again.".
+
+instead of cutting the dragon heart, try attacking the dragon heart.
+instead of attacking the dragon heart:
+	say " You stab the dragon with your sword closest to the sound of the beating heart. A massive roar is heard and the dragon throws itself around on the beach. But after some seconds it is all over. The dragon is dead! You climb back up onto the beach. As a trophy, and to fulfil your quest, you cut out the dragon's one eye, the Dragon Diamond! [line break][line break] You have gotten what you came for so you return to the carriage with the diamond. Without Leon to assist you, you get up in the carriage, take the reins and set off into the sunset where you will experience more adventure.";
+	increase score by 8;
+	end the story finally saying "Congratulations! You have completed The Dragon Diamond!!!".
+
+instead of entering the wooden carriage, say "You cannot return home without the Dragon Diamond. Queen Drana would have you executed.".
+
+instead of rubbing your hands when dirty is 1, say "You rub your hands but the mud won't come off. If you want them nice and clean, you better wash them in some water.".
+
+[BEFORE]	
+Before going:
+	if player is in Dense Forest and dangling string is held begin;
+		say "You can't leave while holding the dangling string, so you let go of it.";
+		move dangling string to Dense Forest;
+		now pulled is 0;
+		move huge basket to By Large Tree;
+		if dangling rope is in By Large Tree begin;
+			move dangling rope to hidden;
+			move tied rope to By Large Tree;
+		end if;
+	end if.
+
+Before Drowing north when player is in Southern Lake Shore or player is in canoe:
+	try rowing;
+	stop the action.
+Before Drowing south when player is in Northern Lake Shore or player is in canoe:
+	try rowing;
+	stop the action.
+	
+[RULE CHANGES]
+The block throwing at people rule is listed instead of the block throwing at rule in the check throwing it at rules. 
+ This is the block throwing at people rule: 
+	if the second noun is Leon, say "That isn't a very appropriate method of attacking a warrior.";
+	if the second noun is the friendly dwarf, say "You don't want to hurt the friendly dwarf.";
+	if the second noun is archer in a tree begin;
+		if the noun is not spear, say "That is not a very appropriate throwing weapon.";
+		if the noun is spear begin;
+			say "With a strong throw you plant the spear right in the archers chest. He screams and falls down from the tree into the forest.";
+			move spear to hidden;
+			move archer in a tree to hidden;
+			increase score by 8;
+		end if;
+	end if.
+
+[DRAGONCOUNT]
+every turn, increase dragoncount by 1.
+every turn when chimneystuffed is 1 and dragoncount is 3, say "The sound of a massive roar fills the air all over the forest! The dragon has come out of its den!".
+every turn when chimneystuffed is 1 and dragoncount is 3 and player is in By the Devil Mountain:
+	say "As you stand in front of the mountain the dragon comes running out from the smoke filled entrance. Filled with rage, it pulverises you instantly with its fire breath.";
+	end the story finally.
+every turn when chimneystuffed is 1 and dragoncount is 4, say "Yet another terrifying dragon roar fills the air. It sounds like the dragon is closing in on you.".
+every turn when chimneystuffed is 1 and dragoncount is 5, say "You hear a faint flapping sound, what you believe is the sound of dragon wings. The dragon must be very close now!".
+every turn when chimneystuffed is 1 and dragoncount is 6:
+	if player is not in Down in a Hole begin;
+		say "Now the flapping of dragon wings can be heard very clearly, so you turn around. The dragon has caught up on you! You do not stand a chance against the huge flying dragon, as it whirls down on you and pulverizes you with its breath of fire.";
+		end the story finally;
+	end if;
+	if player is in Down in a Hole begin;
+		say "From down the hole, you see the huge dragon come flying high up in the air, circling around as if looking for something. You hear a crash as it lands somewhere on the beach. You hear the sound of the dragon crawling nearer and nearer your hole! Suddenly the dragon passes over the hole and lies down, forcing all light out from the hole. You are trapped in darkness beneath the dragon!";
+		move player to Dark Hole;
+		increase score by 8;
+	end if.
+every turn when chimneystuffed is 1 and dragoncount is 7, say "It sounds like the dragon is beginning to move. You better hurry! It will be seconds before the dragon notices you...".
+every turn when chimneystuffed is 1 and dragoncount is 8:
+	say "You hear a sniffing sound and the dragon starts to move. A few moments later it has found you in the hole, pulverizing you with its fire breath.";
+	end the story finally.

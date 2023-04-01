@@ -1,0 +1,816 @@
+"Standing on the Shoulders of Giants" by Kenneth Pedersen
+
+Include Basic Screen Effects by Emily Short. 
+Include Locksmith by Emily Short.
+ 
+[release along with a website and interpreter]
+
+The story description is "COVER ART:
+
+'Sir Isaac Newton' by John Faber Jr after John Michael Rysbrack
+
+mezzotint, (circa 1733)
+
+NPG D3726 ( https://www.npg.org.uk/collections/search/use-this-image.php?mkey=mw37963 )
+
+Licensed under CC BY-NC-ND 3.0 ( https://creativecommons.org/licenses/by-nc-nd/3.0/ )".
+
+[INSTEAD OF PRINTING THE BANNER TEXT]
+Rule for printing the banner text: say "[bold type]Standing on the shoulders of Giants[roman type][line break]A short interactive comedy by Kenneth Pedersen[Line break]Release 2 / Serial number 211012 / Inform 7 build 6M62 (I6/v.6.33 lib 6/12N) SD[line break][italic type]...should not be taken too seriously...a prequel to something bigger and better...[roman type][paragraph break]" instead.
+
+[ENSURE THE TEXT ISAAC INSTEAD OF HE, WE ETC.]
+Isaac Newton is a man. The player is Isaac Newton. Isaac Newton is in ByCottage. Understand "Isaac" and "Newton" and "Newt" as Isaac Newton.
+The description of Isaac Newton is "Isaac was wearing the most expensive and fashionable clothes from 1673.".
+To say We: say "Isaac".
+To say we: say "Isaac". 
+To say Us: say "Isaac".
+To say us: say "Isaac".
+To say Our: say "Isaac's".
+To say our: say "Isaac's".
+
+
+[WHEN PLAY BEGINS]
+when playing begins:
+	Now the story viewpoint is third person singular; 
+	Now the story tense is past tense; 
+	say "[bold type]The Royal Society, Gresham College, London, England, 4th of April 1673[roman type][paragraph break]Isaac Newton entered the big living room of the Royal Society. His friend Isaac Barrow was seated by a table in the northeast corner of the room. 'Hey, Newt! There is a letter for you. I have it here. You won't believe who sent it!'[paragraph break]Isaac approached Barrow and sat down on a chair beside him. He took the letter and looked at the back. It was sent by a Miss Dalton, The Cottage, Epping Forest.[paragraph break]'Hmm, I don't know this Miss Dalton,' Isaac said.[paragraph break]'Hehe - it is the infamous [']witch['] who lives in a cottage inside Epping Forest!' Barrow exclaimed.  'Come on, open it!'[paragraph break]Isaac opened the letter and read it:[paragraph break][italic type]   Dear Mr Newton,[paragraph break]   You may not believe in witches like me. You may think there is a logical explanation for everything in this world. However, I would like to demonstrate that this is not always the case. I am sure that you will not be able to explain what I want to show you. And should you manage to explain it, I am sure that you will have discovered a previously unknown phenomenon.[paragraph break]   You are very welcome in my cottage in the southeast corner of Epping Forest. I recommend that you come during the day, so you do not get lost in the forest.[paragraph break]   I am looking forward to meeting you.[paragraph break]   Best regards,[paragraph break]   Anna Dalton[roman type]          [bold type](press any key to continue)[roman type][paragraph break]";
+	wait for any key;
+	clear screen;
+	say "'It is probably a waste of time,' Isaac muttered to himself.[paragraph break]'You never know,' Barrow said. 'It could provide some inspiration and might even reveal an undiscovered scientific phenomenon. After all, you have been lacking some inspiration lately.'[paragraph break]'That's true. Perhaps I will go there,' Isaac said.[paragraph break]Later, in the evening, Isaac decided that he would go and visit the [']witch['] after a good night's sleep.[paragraph break]The following morning Isaac stepped down from the carriage, paid the coachman and entered the forest. He walked for a short while before he noticed the cottage in a small clearing. He approached it.[paragraph break][paragraph break]".
+
+Instead of looking for the first time:
+	try looking;
+	say "Isaac considered his next move.".
+
+[INITIALIZE VARIABLES]
+thirsty is initially 0.
+GameScene is initially 1.
+knocks is initially 0.
+StoolCount is initially 0. 
+TalkCount is initially 0.
+DoorLearning is initially 0.
+Relativity is initially 0.
+EinsteinFound is initially 0.
+AngelaKnown is initially 0.
+G6count is initially 10.
+S4dooropen is initially 0.
+
+[EVERY TURN]
+Every turn:
+	if G6count is 0 begin;
+		say "Shortly after the kindergarten teacher called the children and asked them to listen carefully. She instructed them to put on their bags and prepare to leave. She then told them to stand in two lines and hold hands with the child next to them. Luckily the boy carrying the bag with the book was last in line. The kindergarten teacher and the children went towards the front desk and then further out onto the street. Isaac followed them closely, keeping an eye on the boy who was carrying the book in his school bag. [paragraph break]Suddenly the boy shouted, 'Angela, my bag is so heavy!'[paragraph break]'Don't be silly. You could carry it to the library so, of course, you can carry it back,' the kindergarten teacher said firmly. Then she led the kids west along the street. Isaac kept following them.";
+		move player to FollowKids;
+		now GameScene is 7;
+	end if;
+	increment G6count;
+	if thirsty is greater than 0 begin;
+		if thirsty is 1, say "Isaac began to feel very thirsty.";
+		if thirsty is 2, say "Isaac was still thirsty.";
+		if thirsty is 3, say "Isaac felt even more thirsty.";
+		if thirsty is 4, say "Isaac began to feel uncomfortable. He was now extremely thirsty.";
+		if thirsty is 5, say "Isaac began to feel dizzy and he was still extremely thirsty.";
+		if thirsty is 6, say "Isaac's vision became blurry. All he could think of was water.";
+		if thirsty is 7 begin;
+			say "Everything became black. Isaac had become unconscious.[paragraph break].[paragraph break].[paragraph break].   (press any key to continue)[paragraph break]";
+			wait for any key;
+			say "Isaac woke up with a headache and looked around. He was lying on a bed in a small room. He sat up. 'What happened?' he was thinking to himself.[paragraph break]Isaac stood up, opened the door and entered a big living room. In one corner of the room, a young woman was seated in a sofa. 'Great, you are awake,' she said. 'I'm Lisa. I gave you a lot of water earlier, but you were barely conscious. Who are you?'[paragraph break]"; 
+			wait for any key;
+			say "'Newton. Isaac Newton.'[paragraph break]Isaac looked around. Everything seemed so strange. So many strange materials. And objects.[paragraph break]'Where am I?' Isaac asked.[paragraph break] '[if player is in PorchRoom]We found you on our porch[otherwise]We found you on the street right outside our house[end if]. So you are still on Epping Road,' Lisa said.[paragraph break]'What is the name of this city?' Isaac asked.[paragraph break]'You don't know that you are in London? You are in London,' Lisa replied with a puzzled expression on her face.[paragraph break]'Strange, I've never heard of Epping Road,' Isaac muttered to himself.[paragraph break]"; 
+			wait for any key;
+			say "'Have you seen the news?' Lisa asked. 'Something very strange has happened today! Come and sit, I will show you.'[paragraph break]Isaac sat down in the sofa beside Lisa. Lisa took a rectangular piece of metal from the strange sofa table and pointed at a big black box, which was placed against the wall. Then light poured out from the box. What Isaac saw was breathtaking: A man who was obviously too big to be inside the box was talking to them! Isaac did not listen. He was paralyzed. What was happening?[paragraph break]"; 
+			wait for any key;
+			say "'They have been sending this the last couple of hours,' Lisa said, 'and it just gets more and more strange. Maybe five hours ago, my phone stopped working. I was visiting a friend and her phone stopped working too. We switched on the telly but it also didn't work. I went home and found that our TV didn't work either. I then went to the basement and fetched our old CRT TV. It worked. They say that most electronics are not working and that the problem is global. All the best engineers and scientists have been looking into the problem. But none of them remember how the malfunctioning equipment is supposed to work! They do remember how the working equipment functions though. It's mainly older electronic equipment that works. It is soo strange...'[paragraph break]Despite his high intelligence, Isaac was still baffled but managed to ask, 'What year is this?'[paragraph break]"; 
+			wait for any key;
+			say "'You must have hit your head seriously! We are in 2020!' Lisa said. 'You better stay here until you feel better. I will go and get some groceries and cook some dinner for us. Hopefully, you will feel better then. Please feel at home.'[paragraph break]Lisa left the room and shortly after Isaac heard the front door slam. Then he started listening to the guy in what Lisa called a TV:[paragraph break]";
+			say "   [italic type]Scientists say that something must have happened to physics! Unfortunately, they cannot remember how physics used to be. We could really use a scientist like the late Albert Einstein now. Never before, and never after, has there been such a genius, the man who wrote the scientific masterpiece [']Die mathematischen Grundlagen der Naturphilosophie['] which is German for [']Mathematical Principles of Natural Philosophy[']. Luckily, all the physics Einstein described, seem to be intact. But most modern scientists and engineers have forgotten what they were working on. It is a mystery why.[paragraph break][roman type]"; 
+			wait for any key;
+			say "Isaac thought deeply about this and ignored the rest of the speech coming from the TV. How and why had he arrived in the future? And why was the future a mess? Were these two things connected? Had it something to do with that guy Einstein's [']Mathematical Principles of Natural Philosophy[']? After all, the title was practically identical to the book Isaac had considered writing in Latin (Philosophiæ Naturalis Principia Mathematica), had he had the necessary calculus at hand.[paragraph break]"; 
+			wait for any key;
+			say "Isaac stood up and found his shoes and jacket in the hallway. He had to talk to Anna Dalton again. He unlocked the door and left. He crossed the road and walked north into the forest. Once again he stood in front of the dilapidated cottage.[paragraph break]";
+			Move player to ByCottage;
+			now GameScene is 4;
+		end if;
+		increase thirsty by 1;
+	end if.
+
+[UNDERSTAND]
+[disable brief, superbrief and verbose]
+Understand nothing as preferring abbreviated room descriptions.
+Understand nothing as preferring unabbreviated room descriptions.
+Understand nothing as preferring sometimes abbreviated room descriptions.
+
+OnKnocking is an action applying to a thing.
+Understand "knock [something]" as OnKnocking.
+Understand "knock on [something]" as OnKnocking.
+
+Talking is an action applying to a thing.
+Understand "t [something]" as talking.
+Understand "t to [something]" as talking.
+Understand "talk [something]" as talking.
+Understand "talk to [something]" as talking.
+Understand "talk with [something]" as talking.
+Notalking is an action applying to nothing.
+Understand "talk" and "talk to" and "t" and "t to" as notalking.
+check notalking:
+	say "You must specify who you want to talk to.".
+	
+LineStanding is an action applying to one thing.
+Understand "stand in [something]" as LineStanding.
+
+Borrowing is an action applying to one thing.
+Understand "borrow [something]" as Borrowing.
+Understand "register [something]" as Borrowing.
+
+ForSearching is an action applying to one topic.
+Understand "search for [text]"  as ForSearching.
+Understand "find [text]"  as ForSearching.
+
+helping is an action applying to nothing.
+Understand "help" and "hint" and "hints" as helping.
+
+xyzzying is an action applying to nothing.
+Understand "xyzzy" and "plugh" as xyzzying.
+
+Table of fiction books
+Topic	Response
+"Dickens"	"Isaac did not know about Charles Dickens who was first born in 1812."
+"Charles Dickens"	"Isaac did not know about Charles Dickens who was first born in 1812."
+"John Grisham"	"Isaac did not know about John Grisham who was first born in 1955."
+"John Ray Grisham Jr"	"Isaac did not know about John Grisham who was first born in 1955."
+"John Ray Grisham Junior"	"Isaac did not know about John Grisham who was first born in 1955."
+"John Ray Grisham"	"Isaac did not know about John Grisham who was first born in 1955."
+"Grisham"	"Isaac did not know about John Grisham who was first born in 1955."
+"Ray Grisham"	"Isaac did not know about John Grisham who was first born in 1955."
+"J R R Tolkien"	"Isaac did not know about J. R. R. Tolkien who was first born in 1892."
+"JRR Tolkien"	"Isaac did not know about J. R. R. Tolkien who was first born in 1892."
+"Tolkien"	"Isaac did not know about J. R. R. Tolkien who was first born in 1892."
+"John Ronald Reuel Tolkien"	"Isaac did not know about J. R. R. Tolkien who was first born in 1892."
+"John Tolkien"	"Isaac did not know about J. R. R. Tolkien who was first born in 1892."
+"John Ronald Tolkien"	"Isaac did not know about J. R. R. Tolkien who was first born in 1892."
+"Ronald Reuel Tolkien"	"Isaac did not know about J. R. R. Tolkien who was first born in 1892."
+"Ronald Tolkien"	"Isaac did not know about J. R. R. Tolkien who was first born in 1892."
+"John Reuel Tolkien"	"Isaac did not know about J. R. R. Tolkien who was first born in 1892."
+"Reuel Tolkien"	"Isaac did not know about J. R. R. Tolkien who was first born in 1892."
+"Mark Twain"	"Isaac did not know about Mark Twain who was first born in 1835."
+"Twain"	"Isaac did not know about Mark Twain who was first born in 1835."
+"Samuel Langhorne Clemens"	"Isaac did not know about Mark Twain who was first born in 1835."
+"Clemens"	"Isaac did not know about Mark Twain who was first born in 1835."
+"Langhorne Clemens"	"Isaac did not know about Mark Twain who was first born in 1835."
+"Samuel Clemens"	"Isaac did not know about Mark Twain who was first born in 1835."
+"Ernest Miller Hemingway"	"Isaac did not know about Ernest Hemingway who was first born in 1899."
+"Ernest Hemingway"	"Isaac did not know about Ernest Hemingway who was first born in 1899."
+"Hemingway"	"Isaac did not know about Ernest Hemingway who was first born in 1899."
+"Miller Hemingway"	"Isaac did not know about Ernest Hemingway who was first born in 1899."
+"Cormac McCarthy"	"Isaac did not know about Cormac McCarthy who was first born in 1933."
+"McCarthy"	"Isaac did not know about Cormac McCarthy who was first born in 1933."
+"Charles Joseph McCarthy"	"Isaac did not know about Cormac McCarthy who was first born in 1933."
+"Charles McCarthy"	"Isaac did not know about Cormac McCarthy who was first born in 1933."
+"Joseph McCarthy"	"Isaac did not know about Cormac McCarthy who was first born in 1933."
+"Charles McCarthy Jr"	"Isaac did not know about Cormac McCarthy who was first born in 1933."
+"Charles McCarthy Junior"	"Isaac did not know about Cormac McCarthy who was first born in 1933."
+"Virginia Woolf"	"Isaac did not know about Virginia Woolf who was first born in 1882."
+"Woolf"	"Isaac did not know about Virginia Woolf who was first born in 1882."
+"Adeline Virginia Woolf"	"Isaac did not know about Virginia Woolf who was first born in 1882."
+"Adeline Virginia Stephen"	"Isaac did not know about Virginia Woolf who was first born in 1882."
+"Stephen"	"Isaac did not know about Virginia Woolf who was first born in 1882."
+"Virginia Stephen"	"Isaac did not know about Virginia Woolf who was first born in 1882."
+"Adeline Stephen"	"Isaac did not know about Virginia Woolf who was first born in 1882."
+"Vladimir Vladimirovich Nabokov"	"Isaac did not know about Vladimir Nabokov who was first born in 1899."
+"Vladimir Nabokov"	"Isaac did not know about Vladimir Nabokov who was first born in 1899."
+"Vladimirovich Nabokov"	"Isaac did not know about Vladimir Nabokov who was first born in 1899."
+"Nabokov"	"Isaac did not know about Vladimir Nabokov who was first born in 1899."
+"Vladimir Sirin"	"Isaac did not know about Vladimir Nabokov who was first born in 1899."
+"Sirin"	"Isaac did not know about Vladimir Nabokov who was first born in 1899."
+"James Brendan Patterson"	"Isaac did not know about James Patterson who was first born in 1947."
+"James Patterson"	"Isaac did not know about James Patterson who was first born in 1947."
+"Brendan Patterson"	"Isaac did not know about James Patterson who was first born in 1947."
+"Patterson"	"Isaac did not know about James Patterson who was first born in 1947."
+"Shakespeare"	"For some reason, Isaac could not find anything written by Shakespeare. Perhaps someone else had borrowed it."
+"William Shakespeare"	"For some reason, Isaac could not find anything written by Shakespeare. Perhaps someone else had borrowed it."
+"Jane Austen"	"Isaac did not know about Jane Austen who was first born in 1775."
+"Austen"	"Isaac did not know about Jane Austen who was first born in 1775."
+"Margaret Eleanor Atwood"	"Isaac did not know about Margaret Atwood who was first born in 1939."
+"Atwood"	"Isaac did not know about Margaret Atwood who was first born in 1939."
+"Margaret Atwood"	"Isaac did not know about Margaret Atwood who was first born in 1939."
+"Eleanor Atwood"	"Isaac did not know about Margaret Atwood who was first born in 1939."
+"Dame Agatha Mary Clarissa Christie"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Agatha Mary Clarissa Christie"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Dame Agatha Christie"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Agatha Christie"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Dame Christie"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Christie"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Agatha Mary Christie"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Dame Agatha Mary Christie"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Lady Mallowan"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Agatha Mary Clarissa Miller"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Mallowan"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Miller"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Agatha Miller"	"Isaac did not know about Agatha Christie who was first born in 1890."
+"Lewis Carroll"	"Isaac did not know about Lewis Carroll who was first born in 1832."
+"Carroll"	"Isaac did not know about Lewis Carroll who was first born in 1832."
+"Charles Lutwidge Dodgson"	"Isaac did not know about Lewis Carroll who was first born in 1832."
+"Dodgson"	"Isaac did not know about Lewis Carroll who was first born in 1832."
+"Charles Dodgson"	"Isaac did not know about Lewis Carroll who was first born in 1832."
+"Lutwidge Dodgson"	"Isaac did not know about Lewis Carroll who was first born in 1832."
+"Charles Lutwidge"	"Isaac did not know about Lewis Carroll who was first born in 1832."
+"CS Lewis"	"Isaac did not know about C. S. Lewis who was first born in 1898."
+"C S Lewis"	"Isaac did not know about C. S. Lewis who was first born in 1898."
+"Lewis"	"Isaac did not know about C. S. Lewis who was first born in 1898."
+"Clive Staples Lewis"	"Isaac did not know about C. S. Lewis who was first born in 1898."
+"Clive Lewis"	"Isaac did not know about C. S. Lewis who was first born in 1898."
+"Toni Morrison"	"Isaac did not know about Toni Morrison who was first born in 1931."
+"Morrison"	"Isaac did not know about Toni Morrison who was first born in 1931."
+"Chloe Ardelia Wofford"	"Isaac did not know about Toni Morrison who was first born in 1931."
+"Chloe Wofford"	"Isaac did not know about Toni Morrison who was first born in 1931."
+"Ardelia Wofford"	"Isaac did not know about Toni Morrison who was first born in 1931."
+"Wofford"	"Isaac did not know about Toni Morrison who was first born in 1931."
+"JK Rowling"	"Isaac did not know about J. K. Rowling who was first born in 1965."
+"J K Rowling"	"Isaac did not know about J. K. Rowling who was first born in 1965."
+"Rowling"	"Isaac did not know about J. K. Rowling who was first born in 1965."
+"Joanne Rowling"	"Isaac did not know about J. K. Rowling who was first born in 1965."
+"Robert Galbraith"	"Isaac did not know about J. K. Rowling who was first born in 1965."
+"Galbraith"	"Isaac did not know about J. K. Rowling who was first born in 1965."
+"Tolstoy"	"Isaac did not know about Leo Tolstoy who was first born in 1828."
+"Tolstoi"	"Isaac did not know about Leo Tolstoy who was first born in 1828."
+"Leo Tolstoi"	"Isaac did not know about Leo Tolstoy who was first born in 1828."
+"Leo Tolstoy"	"Isaac did not know about Leo Tolstoy who was first born in 1828."
+"Lev Tolstoy"	"Isaac did not know about Leo Tolstoy who was first born in 1828."
+"Lev Tolstoi"	"Isaac did not know about Leo Tolstoy who was first born in 1828."
+"Lev Nikolayevich Tolstoy"	"Isaac did not know about Leo Tolstoy who was first born in 1828."
+"Isaac Asimov"	"Isaac did not know about Isaac Asimov who was first born in 1920."
+"Asimov"	"Isaac did not know about Isaac Asimov who was first born in 1920."
+"Isaak Asimov"	"Isaac did not know about Isaac Asimov who was first born in 1920."
+"Isaak Azimov"	"Isaac did not know about Isaac Asimov who was first born in 1920."
+"Azimov"	"Isaac did not know about Isaac Asimov who was first born in 1920."
+"Verne"	"Isaac did not know about Jules Verne who was first born in 1828."
+"Jules Verne"	"Isaac did not know about Jules Verne who was first born in 1828."
+"Mary Shelley"	"Isaac did not know about Mary Shelley who was first born in 1759."
+"Shelley"	"Isaac did not know  about Mary Shelley who was first born in 1759."
+"sir arthur conan doyle"	"Isaac did not know about Sir Arthur Conan Doyle who was first born in 1859."
+"arthur conan doyle"	"Isaac did not know about Sir Arthur Conan Doyle who was first born in 1859."
+"conan doyle"	"Isaac did not know about Sir Arthur Conan Doyle who was first born in 1859."
+"doyle"	"Isaac did not know about Sir Arthur Conan Doyle who was first born in 1859."
+"sir henry rider haggard"	"Isaac did not know about Sir Henry Rider Haggard who was first born in 1856."
+"henry rider haggard"	"Isaac did not know about Sir Henry Rider Haggard who was first born in 1856."
+"rider haggard"	"Isaac did not know about Sir Henry Rider Haggard who was first born in 1856."
+"haggard"	"Isaac did not know about Sir Henry Rider Haggard who was first born in 1856."
+"rider"	"Isaac did not know about Sir Henry Rider Haggard who was first born in 1856."
+"Lewis Wallace"	"Isaac did not know about Lewis Wallace who was first born in 1827."
+"Wallace"	"Isaac did not know about Lewis Wallace who was first born in 1827."
+"Stoker"	"Isaac did not know about Bram Stoker who was first born in 1847."
+"Bram Stoker"	"Isaac did not know about Bram Stoker who was first born in 1847."
+"Murasaki Shikibu"	"A single book written by Murasaki Shikibu could be found on the shelf. The title was [']The Tale of Genji[']. It was translated from Japanese and claimed to be the first novel in the world. Isaac found it interesting but realized that there wasn't time to read it. Isaac had more important things to do, so he left it on the shelf.."
+"Murasaki"	"A single book written by Murasaki Shikibu could be found on the shelf. The title was [']The Tale of Genji[']. It was translated from Japanese and claimed to be the first novel in the world. Isaac found it interesting but realized that there wasn't time to read it. Isaac had more important things to do, so he left it on the shelf.."
+"Shikibu"	"A single book written by Murasaki Shikibu could be found on the shelf. The title was [']The Tale of Genji[']. It was translated from Japanese and claimed to be the first novel in the world. Isaac found it interesting but realized that there wasn't time to read it. Isaac had more important things to do, so he left it on the shelf.."
+"Miguel de Cervantes"	"A single book written by Miguel de Cervantes could be found on the shelf. The title was [']Don Quixote[']. Isaac found it interesting but realized that there wasn't time to read it. Isaac had more important things to do."
+"de Cervantes"	"A single book written by Miguel de Cervantes could be found on the shelf. The title was [']Don Quixote[']. Isaac found it interesting but realized that there wasn't time to read it. Isaac had more important things to do."
+"Cervantes"	"A single book written by Miguel de Cervantes could be found on the shelf. The title was [']Don Quixote[']. Isaac found it interesting but realized that there wasn't time to read it. Isaac had more important things to do."
+"anonymous"	"Quite surprisingly, there was a book written by [']anonymous[']. It was called [']Sir Gawain and the Green Knight[']. It had been written in the late 14th-century and seemed highly interesting. Unfortunately, Isaac did not have time to pursue his interests so he decided not to take the book."
+"Thomas Malory"	"Isaac found a single book by Thomas Malory called [']Le Morte d'Arthur[']. Isaac found it very interesting but didn't have time to pursue his interests at the moment. Thus he put it back on the shelf."
+"Malory"	"Isaac found a single book by Thomas Malory called [']Le Morte d'Arthur[']. Isaac found it very interesting but didn't have time to pursue his interests at the moment. Thus he put it back on the shelf."
+"Giovanni Boccaccio"	"Isaac found a single book by Giovanni Boccaccio called [']The Decameron[']. It seemed very interesting but Isaac did not have time to pursue his interests at the moment."
+"Boccaccio"	"Isaac found a single book by Giovanni Boccaccio called [']The Decameron[']. It seemed very interesting but Isaac did not have time to pursue his interests at the moment."
+"Geoffrey Chaucer"	"Isaac found a single book by Geoffrey Chaucer called [']Canterbury Tales[']. Isaac found it interesting but didn't have time to pursue his iterests at the moment."
+"Chaucer"	"Isaac found a single book by Geoffrey Chaucer called [']Canterbury Tales[']. Isaac found it interesting but didn't have time to pursue his iterests at the moment."
+"Richard Head"	"Isaac found a single book by Richard Head called [']The English Rogue[']. It seemed very interesting but Isaac did not have time to pursue his interests at the moment."
+"Head"	"Isaac found a single book by Richard Head called [']The English Rogue[']. It seemed very interesting but Isaac did not have time to pursue his interests at the moment."
+"Raoul Lefevre"	"Isaac found a single book by Raoul Lefèvre called [']Recuyell of the Historyes of Troye[']. It was translated from French by William Caxton and it seemed very interesting but Isaac did not have time to pursue his interests at the moment."
+"Lefevre"	"Isaac found a single book by Raoul Lefèvre called [']Recuyell of the Historyes of Troye[']. It was translated from French by William Caxton and it seemed very interesting but Isaac did not have time to pursue his interests at the moment."
+"Raoul Lefèvre"	"Isaac found a single book by Raoul Lefèvre called [']Recuyell of the Historyes of Troye[']. It was translated from French by William Caxton and it seemed very interesting but Isaac did not have time to pursue his interests at the moment."
+"Lefèvre"	"Isaac found a single book by Raoul Lefèvre called [']Recuyell of the Historyes of Troye[']. It was translated from French by William Caxton and it seemed very interesting but Isaac did not have time to pursue his interests at the moment."
+"Dumas"	"Isaac did not know about Alexandre Dumas who was first born in 1802."
+"Alexandre Dumas"	"Isaac did not know about Alexandre Dumas who was first born in 1802."
+
+Table of science books
+Topic	Response
+"Stephen Hawking"	"Isaac had never heard of Stephen Hawking who was born in 1942, many years after Isaac died."
+"Hawking"	"Isaac had never heard of Stephen Hawking who was born in 1942, many years after Isaac died."
+"Leonhard Euler"	"Isaac had never heard of Leonhard Euler who was first born in 1707."
+"Euler"	"Isaac had never heard of Leonhard Euler who was first born in 1707."
+"Anders Celsius"	"Isaac had never heard of Anders Celsius who was first born in 1701."
+"Celsius"	"Isaac had never heard of Anders Celsius who was first born in 1701."
+"Gabriel Daniel Fahrenheit"	"Isaac had not yet heard of Gabriel Daniel Fahrenheit who was first born in 1686."
+"Gabriel Fahrenheit"	"Isaac had not yet heard of Gabriel Daniel Fahrenheit who was first born in 1686."
+"Daniel Fahrenheit"	"Isaac had not yet heard of Gabriel Daniel Fahrenheit who was first born in 1686."
+"Fahrenheit"	"Isaac had not yet heard of Gabriel Daniel Fahrenheit who was first born in 1686."
+"James Prescott Joule"	"Isaac had not yet heard of James Prescott Joule who was first born in 1818."
+"Prescott Joule"	"Isaac had not yet heard of James Prescott Joule who was first born in 1818."
+"James Joule"	"Isaac had not yet heard of James Prescott Joule who was first born in 1818."
+"Joule"	"Isaac had not yet heard of James Prescott Joule who was first born in 1818."
+"Nicolas Clément-Desormes"	"Isaac had not yet heard of Nicolas Clément-Desormes who was first born in 1779."
+"Nicolas Clément"	"Isaac had not yet heard of Nicolas Clément-Desormes who was first born in 1779."
+"Nicolas Desormes"	"Isaac had not yet heard of Nicolas Clément-Desormes who was first born in 1779."
+"Clément-Desormes"	"Isaac had not yet heard of Nicolas Clément-Desormes who was first born in 1779."
+"Desormes"	"Isaac had not yet heard of Nicolas Clément-Desormes who was first born in 1779."
+"Clément"	"Isaac had not yet heard of Nicolas Clément-Desormes who was first born in 1779."
+"Nicolas Clement-Desormes"	"Isaac had not yet heard of Nicolas Clément-Desormes who was first born in 1779."
+"Nicolas Clement"	"Isaac had not yet heard of Nicolas Clément-Desormes who was first born in 1779."
+"Clement-Desormes"	"Isaac had not yet heard of Nicolas Clément-Desormes who was first born in 1779."
+"Clement"	"Isaac had not yet heard of Nicolas Clément-Desormes who was first born in 1779."
+"John Dalton"	"Isaac did not know about John Dalton who was first born in 1766."
+"Dalton"	"Isaac did not know about John Dalton who was first born in 1766."
+"Georg Friedrich Bernhard Riemann"	"Isaac did not know about Bernhard Riemann who was first born in 1826."
+"Bernhard Riemann"	"Isaac did not know about Bernhard Riemann who was first born in 1826."
+"Riemann"	"Isaac did not know about Bernhard Riemann who was first born in 1826."
+"Georg Bernhard Riemann"	"Isaac did not know about Bernhard Riemann who was first born in 1826."
+"Friedrich Bernhard Riemann"	"Isaac did not know about Bernhard Riemann who was first born in 1826."
+"Georg Riemann"	"Isaac did not know about Bernhard Riemann who was first born in 1826."
+"Friedrich Riemann"	"Isaac did not know about Bernhard Riemann who was first born in 1826."
+"Srinivasa Aiyangar Ramanujan"	"Isaac did not know about Srinivasa Ramanujan who was first born in 1887."
+"Srinivasa Ramanujan"	"Isaac did not know about Srinivasa Ramanujan who was first born in 1887."
+"Ramanujan"	"Isaac did not know about Srinivasa Ramanujan who was first born in 1887."
+"Aiyangar Ramanujan"	"Isaac did not know about Srinivasa Ramanujan who was first born in 1887."
+"Alan Mathison Turing"	"Isaac did not know about Alan Turing who was first born in 1912."
+"Alan Turing"	"Isaac did not know about Alan Turing who was first born in 1912."
+"Turing"	"Isaac did not know about Alan Turing who was first born in 1912."
+"Mathison Turing"	"Isaac did not know about Alan Turing who was first born in 1912."
+"René Descartes"	"Isaac found a single book by René Descartes. Isaac knew this book. It was simply called Geometry and was an excellent book. However, Isaac did not regard it as important for fixing the future, so he left it on the shelf."
+"Rene Descartes"	"Isaac found a single book by René Descartes. Isaac knew this book. It was simply called Geometry and was an excellent book. However, Isaac did not regard it as important for fixing the future, so he left it on the shelf."
+"Descartes"	"Isaac found a single book by René Descartes. Isaac knew this book. It was simply called Geometry and was an excellent book. However, Isaac did not regard it as important for fixing the future, so he left it on the shelf."
+"Archimedes"	"Isaac found volume 1 of 'On the Equilibrium of Planes' by Archimedes of Syracuse. It seemed extremely interesting but unimportant to Isaac's current quest. He therefore left the book on the shelf."
+"Archimedes of Syracuse"	"Isaac found volume 1 of 'On the Equilibrium of Planes' by Archimedes of Syracuse. It seemed extremely interesting but unimportant to Isaac's current quest. He therefore left the book on the shelf."
+"Euclid"	"Isaac found a couple of volumes of 'Elements' by Euclid. Isaac would have loved to read these but he realized that he had to focus on fixing the future. Thus he left the books on the shelf."
+"Euklid"	"Isaac found a couple of volumes of 'Elements' by Euclid. Isaac would have loved to read these but he realized that he had to focus on fixing the future. Thus he left the books on the shelf."
+"Euclid from Megara"	"Isaac found a couple of volumes of 'Elements' by Euclid. Isaac would have loved to read these but he realized that he had to focus on fixing the future. Thus he left the books on the shelf."
+"Heinrich Rudolf Hertz"	"Isaac did not know about Heinrich Rudolf Hertz who was first born in 1857."
+"Heinrich Hertz"	"Isaac did not know about Heinrich Rudolf Hertz who was first born in 1857."
+"Rudolf Hertz"	"Isaac did not know about Heinrich Rudolf Hertz who was first born in 1857."
+"Hertz"	"Isaac did not know about Heinrich Rudolf Hertz who was first born in 1857."
+"Jean-Baptiste Joseph Fourier"	"Isaac did not know about Joseph Fourier who was first born in 1768."
+"Joseph Fourier"	"Isaac did not know about Joseph Fourier who was first born in 1768."
+"Fourier"	"Isaac did not know about Joseph Fourier who was first born in 1768."
+"Jean-Baptiste Fourier"	"Isaac did not know about Joseph Fourier who was first born in 1768."
+"Jean Fourier"	"Isaac did not know about Joseph Fourier who was first born in 1768."
+"Baptiste Fourier"	"Isaac did not know about Joseph Fourier who was first born in 1768."
+"Blaise Pascal"	"Isaac found a small book by Blaise Pascal called 'Treatise on the Arithmetical Triangle'. Isaac found it interesting but unimportant for his quest to fix the future. He therefore decided to leave it on the shelf."
+"Pascal"	"Isaac found a small book by Blaise Pascal called 'Treatise on the Arithmetical Triangle'. Isaac found it interesting but unimportant for his quest to fix the future. He therefore decided to leave it on the shelf."
+"Andre Ampere"	"Isaac did not know about André-Marie Ampère who was first born in 1775."
+"André Ampère"	"Isaac did not know about André-Marie Ampère who was first born in 1775."
+"Andre-Marie Ampere"	"Isaac did not know about André-Marie Ampère who was first born in 1775."
+"André-Marie Ampère"	"Isaac did not know about André-Marie Ampère who was first born in 1775."
+"Ampère"	"Isaac did not know about André-Marie Ampère who was first born in 1775."
+"Ampere"	"Isaac did not know about André-Marie Ampère who was first born in 1775."
+"Lord Kelvin"	"Isaac did not know about Lord Kelvin who was first born in 1824."
+"Thomson"	"Isaac did not know about Lord Kelvin who was first born in 1824."
+"William Thomson"	"Isaac did not know about Lord Kelvin who was first born in 1824."
+"Kelvin"	"Isaac did not know about Lord Kelvin who was first born in 1824."
+"Ludwig Eduard Boltzmann"	"Isaac did not know about Ludwig Boltzmann who was first born in 1844."
+"Ludwig Boltzmann"	"Isaac did not know about Ludwig Boltzmann who was first born in 1844."
+"Boltzmann"	"Isaac did not know about Ludwig Boltzmann who was first born in 1844."
+"Avogadro"	"Isaac did not know about Amedeo Avogadro who was first born in 1776."
+"Amedeo Avogadro"	"Isaac did not know about Amedeo Avogadro who was first born in 1776."
+"Lorenzo Romano Amede"	"Isaac did not know about Amedeo Avogadro who was first born in 1776."
+"Amede"	"Isaac did not know about Amedeo Avogadro who was first born in 1776."
+"Marie Sklodowska-Curie"	"Isaac did not know about Marie Curie who was first born in 1867."
+"Marie Curie"	"Isaac did not know about Marie Curie who was first born in 1867."
+"Curie"	"Isaac did not know about Marie Curie who was first born in 1867."
+"Marya Salomea Sklodowska"	"Isaac did not know about Marie Curie who was first born in 1867."
+"Tesla"	"Isaac had never heard of Nikola Tesla who was born in 1856, many years after Isaac died."
+"Nikola Tesla"	"Isaac had never heard of Nikola Tesla who was born in 1856, many years after Isaac died."
+"Edison"	"Isaac had never heard of Thomas Edison who was born in 1847, many years after Isaac died."
+"Thomas Edison"	"Isaac had never heard of Thomas Edison who was born in 1847, many years after Isaac died."
+"Darwin"	"Isaac had never heard of Charles Darwin who was born in 1809, many years after Isaac died."
+"Charles Darwin"	"Isaac had never heard of Charles Darwin who was born in 1809, many years after Isaac died."
+"Francis Crick"	"Isaac had never heard of Francis Crick who was born in 1906, many years after Isaac died."
+"Crick"	"Isaac had never heard of Francis Crick who was born in 1906, many years after Isaac died."
+"Rosalind Franklin"	"Isaac had never heard of Rosalind Franklin who was born in 1920, many years after Isaac died."
+"Franklin"	"Isaac had never heard of Rosalind Franklin who was born in 1920, many years after Isaac died."
+"Richard Feynman"	"Isaac had never heard of Richard Feynman who was born in 1918, many years after Isaac died."
+"Feynman"	"Isaac had never heard of Richard Feynman who was born in 1918, many years after Isaac died."
+"Linne"	"Isaac had never heard of Carl von Linné who was first born in 1707."
+"von Linne"	"Isaac had never heard of Carl von Linné who was first born in 1707."
+"Carl von Linne"	"Isaac had never heard of Carl von Linné who was first born in 1707."
+"Linné"	"Isaac had never heard of Carl von Linné who was first born in 1707."
+"von Linné"	"Isaac had never heard of Carl von Linné who was first born in 1707."
+"Carl von Linné"	"Isaac had never heard of Carl von Linné who was first born in 1707."
+"Johannes Kepler"	"Isaac found a single book by Johannes Kepler. Isaac knew that book. It was called [']The Optical Part of Astronomy[']. Isaac did not find it important for fixing the future so he left it on the shelf."
+"Kepler"	"Isaac found a single book by Johannes Kepler. Isaac knew that book. It was called [']The Optical Part of Astronomy[']. Isaac did not find it important for fixing the future so he left it on the shelf."
+"Nicolaus Copernicus"	"Isaac found a single book by Nicolaus Copernicus. Isaac knew that book. It was called [']On the Revolutions of the Celestial Spheres[']. Isaac did not find it important for fixing the future so he left it on the shelf."
+"Copernicus"	"Isaac found a single book by Nicolaus Copernicus. Isaac knew that book. It was called [']On the Revolutions of the Celestial Spheres[']. Isaac did not find it important for fixing the future so he left it on the shelf."
+"Tycho Brahe"	"Isaac found a single book by Tycho Brahe. Isaac knew that book. It was called [']Instruments for the Restoration of Astronomy[']. Isaac did not find it important for fixing the future so he left it on the shelf."
+"Brahe"	"Isaac found a single book by Tycho Brahe. Isaac knew that book. It was called [']Instruments for the Restoration of Astronomy[']. Isaac did not find it important for fixing the future so he left it on the shelf."
+"John Napier"	"Isaac found a single book by John Napier. Isaac knew that book. It was called [']The Construction of the Wonderful Canon of Logarithms[']. Isaac did not find it important for fixing the future so he left it on the shelf."
+"Napier"	"Isaac found a single book by John Napier. Isaac knew that book. It was called [']The Construction of the Wonderful Canon of Logarithms[']. Isaac did not find it important for fixing the future so he left it on the shelf."
+"Neper"	"Isaac found a single book by John Napier. Isaac knew that book. It was called [']The Construction of the Wonderful Canon of Logarithms[']. Isaac did not find it important for fixing the future so he left it on the shelf."
+"Isaac Newton"	"For some reason there were no books written by Isaac himself."
+"Sir Isaac Newton"	"For some reason there were no books written by Isaac himself."
+"Newton"	"For some reason there were no books written by Isaac himself."
+"Isaac"	"For some reason there were no books written by Isaac himself."
+"James Clerk Maxwell"	"Isaac had never heard of James Clerk Maxwell who was first born in 1831, many years after Isaac died."
+"Clerk Maxwell"	"Isaac had never heard of James Clerk Maxwell who was first born in 1831, many years after Isaac died."
+"Maxwell"	"Isaac had never heard of James Clerk Maxwell who was first born in 1831, many years after Isaac died."
+"Niels Bohr"	"Isaac had never heard of Niels Bohr who was first born in 1885, many years after Isaac died."
+"Bohr"	"Isaac had never heard of Niels Bohr who was first born in 1885, many years after Isaac died."
+"Werner Heisenberg"	"Isaac had never heard of Werner Heisenberg who was first born in 1901, many years after Isaac died."
+"Heisenberg"	"Isaac had never heard of Werner Heisenberg who was first born in 1901, many years after Isaac died."
+"Max Planck"	"Isaac had never heard of Max Planck who was first born in 1858, many years after Isaac died."
+"Planck"	"Isaac had never heard of Max Planck who was first born in 1858, many years after Isaac died."
+"Erwin Schrödinger"	"Isaac had never heard of Erwin Schrödinger who was first born in 1887, many years after Isaac died."
+"Schrödinger"	"Isaac had never heard of Erwin Schrödinger who was first born in 1887, many years after Isaac died."
+"Erwin Schrodinger"	"Isaac had never heard of Erwin Schrödinger who was first born in 1887, many years after Isaac died."
+"Schrodinger"	"Isaac had never heard of Erwin Schrödinger who was first born in 1887, many years after Isaac died."
+"Max Born"	"Isaac had never heard of Max Born who was first born in 1882, many years after Isaac died."
+"Born"	"Isaac had never heard of Max Born who was first born in 1882, many years after Isaac died."
+"Michael Faraday"	"Isaac had never heard of Michael Faraday who was first born in 1791, many years after Isaac died."
+"Faraday"	"Isaac had never heard of Michael Faraday who was first born in 1791, many years after Isaac died."
+"Carl Friedrich Gauss"	"Isaac had never heard of Carl Friedrich Gauss who was first born in 1777, many years after Isaac died."
+"Friedrich Gauss"	"Isaac had never heard of Carl Friedrich Gauss who was first born in 1777, many years after Isaac died."
+"Gauss"	"Isaac had never heard of Carl Friedrich Gauss who was first born in 1777, many years after Isaac died."
+"Holger Bech Nielsen"	"Isaac had never heard of Holger Bech Nielsen who was first born in 1941, many years after Isaac died."
+"Bech Nielsen"	"Isaac had never heard of Holger Bech Nielsen who was first born in 1941, many years after Isaac died."
+"Nielsen"	"Isaac had never heard of Holger Bech Nielsen who was first born in 1941, many years after Isaac died."
+"Boyle"	"Isaac found a single book by Robert Boyle called [']The Sceptical Chymist[']. It seemed extremely interesting but Isaac figured that it was not important for fixing the future."
+"Robert Boyle"	"Isaac found a single book by Robert Boyle called [']The Sceptical Chymist[']. It seemed extremely interesting but Isaac figured that it was not important for fixing the future."
+"Galileo Galilei"	"Isaac found a single book by Galileo Galilei called [']Dialogue Concerning the Two Chief World Systems[']. It seemed extremely interesting but Isaac figured that it was not important for fixing the future."
+"Galileo"	"Isaac found a single book by Galileo Galilei called [']Dialogue Concerning the Two Chief World Systems[']. It seemed extremely interesting but Isaac figured that it was not important for fixing the future."
+"Galilei"	"Isaac found a single book by Galileo Galilei called [']Dialogue Concerning the Two Chief World Systems[']. It seemed extremely interesting but Isaac figured that it was not important for fixing the future."
+"Gottfried Wilhelm von Leibniz"	"A single book written by Leibniz was found on the shelf. It was called [']Political writings Volume 1[']. Isaac was curious but felt it wasn't relevant for fixing the messy future and so he left it on the shelf."
+"Gottfried Wilhelm von Leibnitz"	"A single book written by Leibniz was found on the shelf. It was called [']Political writings Volume 1[']. Isaac was curious but felt it wasn't relevant for fixing the messy future and so he left it on the shelf."
+"Gottfried Wilhelm Leibniz"	"A single book written by Leibniz was found on the shelf. It was called [']Political writings Volume 1[']. Isaac was curious but felt it wasn't relevant for fixing the messy future and so he left it on the shelf."
+"Gottfried Wilhelm Leibnitz"	"A single book written by Leibniz was found on the shelf. It was called [']Political writings Volume 1[']. Isaac was curious but felt it wasn't relevant for fixing the messy future and so he left it on the shelf."
+"Leibnitz"	"A single book written by Leibniz was found on the shelf. It was called [']Political writings Volume 1[']. Isaac was curious but felt it wasn't relevant for fixing the messy future and so he left it on the shelf."
+"Leibniz"	"A single book written by Leibniz was found on the shelf. It was called [']Political writings Volume 1[']. Isaac was curious but felt it wasn't relevant for fixing the messy future and so he left it on the shelf."
+"von Leibnitz"	"A single book written by Leibniz was found on the shelf. It was called [']Political writings Volume 1[']. Isaac was curious but felt it wasn't relevant for fixing the messy future and so he left it on the shelf."
+"von Leibniz"	"A single book written by Leibniz was found on the shelf. It was called [']Political writings Volume 1[']. Isaac was curious but felt it wasn't relevant for fixing the messy future and so he left it on the shelf."
+
+
+Table of useful books
+Topic	Response
+"Albert Einstein"	"Isaac found two books by Albert Einstein. The first was very thin and was called [']On a Heuristic Viewpoint Concerning the Production and Transformation of Light['] and was written in 1905. The other book was very big and was published in 1925. It was called [']Mathematical Principles of Natural Philosophy[']."
+"Einstein"	"Isaac found two books by Albert Einstein. The first was very thin and was called [']On a Heuristic Viewpoint Concerning the Production and Transformation of Light['] and was written in 1905. The other book was very big and was published in 1925. It was called [']Mathematical Principles of Natural Philosophy[']."
+
+A very thin book is a thing. Understand "On a Heuristic Viewpoint Concerning the Production and Transformation of Light" and "On a Heuristic Viewpoint" and "a Heuristic Viewpoint" and "On a Heuristic" and "heuristic viewpoint" and "production" and "transformation" and "a heuristic" and "heuristic" and "light" and "transformation of light" as a very thin book. A very thin book is in Dummy. The description of a very thin book is "The title of the thin book was [']On a Heuristic Viewpoint Concerning the Production and Transformation of Light['] by Albert Einstein. Isaac did not feel that it was related to the strange problems happening in 2020, so he left it on the shelf.".
+A very big book is a thing. Understand "Mathematical Principles of Natural Philosophy" and "Mathematical" and "principles" and "principia" and "natural" and "philosophy" and "mathematical principles" and "natural philosophy" as a very big book. A very big book is in Dummy. The description of a very big book is "The title of the big book was [']Mathematical Principles of Natural Philosophy['] by Albert Einstein. Isaac felt that this book somehow was related to the strange problems happening in 2020 so he skimmed the table of contents. Amazing! This book described how the laws of gravitation were universal, i.e. they could explain mechanics here on Earth as well as they explained the so far empirical laws of planetary motion obtained by Kepler! If Isaac took this book back to 1673 he would revolutionize science. And Einstein didn't have to spend 20 years researching mechanics. Perhaps Einstein and his peers would then have time to discover [if Relativity is 0]the forgotten physics of the future. [otherwise]the Theory of Relativity and Quantum Mechanics. [end if][paragraph break]Isaac was certain that he had to return to Anna Dalton with this book as quickly as possible.".
+
+check ForSearching:
+	if player is in FictionShelves, say "Isaac did not know a fiction author by that name."; 
+	if player is in ScienceShelves, say "Isaac did not know a science author by that name."; 
+	if player is in KidsSection, say "Isaac did not know any authors of children's books.";
+	if player is not in a bookroom, say "This is not the place to be searching for something specific.".
+
+After taking a very big book, say "Isaac took [']Mathematical Principles of Natural Philosophy[']. He felt it was important.".
+instead of going south in FrontDesk while player is carrying a very big book, say "Isaac was about to leave when the librarian behind the front desk shouted, 'Hey! Even though our electronic systems are down, you still have to register that book. You must stand in line like everyone else.' Isaac knew that he wouldn't be able to borrow the book as he didn't have any documentation on who he was, so he didn't bother to stand in line.".
+instead of taking a very thin book, try examining a very thin book.	
+instead of ForSearching a topic listed in the Table of fiction books while player is in FictionShelves:
+	say "[response entry][paragraph break]".
+instead of ForSearching a topic listed in the Table of science books while player is in ScienceShelves:
+	say "[response entry][paragraph break]".
+instead of ForSearching a topic listed in the Table of useful books while player is in ScienceShelves:
+	if EinsteinFound is 1, say "Isaac had already found a thin book and a big book by Albert Einstein.";
+	if EinsteinFound is 0 begin;
+		say "[response entry][paragraph break]";
+		now a very thin book is on shelves2;
+		now a very big book is on shelves2;
+		now EinsteinFound is 1;
+	end if.
+
+
+		
+[LOCATIONS]	
+ByCottage is a room. "Isaac stood south of the front door to a dilapidated cottage. There were no windows, at least not on this side of the cottage. No grass or plants were growing in this clearing. It seemed very deserted. Isaac could leave by going south.". The printed name of ByCottage is "By the Cottage". InsideCottage is inside of ByCottage.
+InsideCottage is a room. "[if player is on the stool]Isaac was seated on a stool in the witch's cottage.[otherwise]Isaac stood in the witch's cottage.[end if] Here, from the inside, the cottage did not seem dilapidated at all. Probably a trick to avoid thieves entering her cottage. There wasn't a lot of furniture in here, only the stool, the rocking chair where Anna Dalton was seated and then a small table in the west end of the cottage. However, there were many shelves on the walls with jars, plants and stuffed animals.". The printed name of InsideCottage is "Inside the Cottage". ByCottage is outside of InsideCottage.
+SouthOfCottage is a room. "Isaac stood at the south end of the forest path by a strange road made of asphalt. He could go north back to the cottage or cross the road by going south, whereas he had no incentive to go east or west along the road. Isaac could see a road sign.". The printed name of SouthOfCottage is "North of a strange road". SouthOfCottage is south of ByCottage. Dummy is west of SouthOfCottage. Dummy is east of SouthOfCottage.
+Epping1218 is a room. "Isaac stood on the pavement in front of Epping Road 1218. It was a strange house but the neighbouring houses were similar. He could go south onto the porch, north across the road or follow the road east and west.". The printed name of Epping1218 is "Epping Road 1218". Epping1218 is south of SouthOfCottage. Dummy is west of Epping1218. Dummy is east of Epping1218.
+LibraryFront is a room. "Isaac stood in front of the door to a big red building, which was a library according to the big fat letters above the door. The door was north of here but had no handle. In theory, Isaac could cross the road to the south, but it was much too busy and he didn't want to get hit by a vehicle. He could also walk along the road to the east and west but he had no incentive to do that at the moment.". The printed name of LibraryFront is "In front of a library". Dummy is west of LibraryFront. Dummy is east of LibraryFront. Dummy is south of LibraryFront. FrontDesk is inside of LibraryFront. Dummy is southwest of LibraryFront. Dummy is southeast of LibraryFront.
+FrontDesk is a room. "Isaac was standing just inside the library. In front of him, there was a desk with the words [']Front Desk['] written above and two signs pointed east and west. [']Kids['] were east and [']Grown-ups['] were west. Isaac could leave the library to the south.". The printed name of FrontDesk is "Front Desk". FrontDesk is north of LibraryFront.
+FictionShelves is a room. "Isaac was almost surrounded by shelves full of novels and short stories. He could go east back to the front desk or further west, deeper into the library.". The printed name of FictionShelves is "Among shelves with fiction". FictionShelves is west of FrontDesk.
+ScienceShelves is a room. "Isaac had reached the end of the library. He was almost surrounded by shelves with all kinds of scientific books. However, two shelf sections were empty. He could return to the fiction section by going east.". The printed name of ScienceShelves is "Among shelves with scientific books". ScienceShelves is west of FictionShelves.
+KidsSection is a room. "Isaac saw a lot of shelves with books for children. There was also a low but wide table in one corner surrounded by lots of small chairs. However, no one was seated at the moment. Instead, a lot of children were running around, playing with each other. Isaac found them very noisy. The only exit was west towards the front desk.". The printed name of KidsSection is "Kids Section". KidsSection is east of FrontDesk.
+FollowKids is a room. "Isaac was further down the street following the kids. The boy who was carrying the school bag with the book was right in front of Isaac. The kindergarten teacher was way up ahead.". The printed name of FollowKids is "Following the kids".
+PorchRoom is a room. "Isaac was standing on the porch right beside the front door. Next to the door was a window. The house seemed to have been painted recently in black and white colours. The house was well kept and the atmosphere was nice. Isaac could leave the porch to the north.". The printed name of PorchRoom is "On the porch". PorchRoom is south of Epping1218. Dummy is south of PorchRoom.
+Dummy is a room.
+A bookroom is a kind of room. FictionShelves is a bookroom. ScienceShelves is a bookroom. KidsSection is a bookroom.
+
+[DOORS]
+the wooden door is south of InsideCottage and north of ByCottage. The wooden door is a door and scenery. The description of the wooden door is "[if the wooden door is open]The wooden door was open.[otherwise]The wooden door was closed.".
+
+[DEFINITIONS]
+A chair is a kind of supporter. A chair is always enterable.
+
+[OBJECTS]
+asphalt2 is scenery in Epping1218. The printed name of asphalt2 is "the asphalt road". The description of asphalt2 is "The road was made of dark asphalt. There were white stripes on the middle of the road. How strange...". Understand "asphalt" and "road" and "asphalt road" as asphalt2.
+asphalt1 is scenery in SouthOfCottage. The printed name of asphalt1 is "the asphalt road". The description of asphalt1 is "The road was made of dark asphalt. There were white stripes on the middle of the road. How strange...". Understand "asphalt" and "road" and "asphalt road" as asphalt1.
+SouthHouses are scenery in SouthOfCottage. The printed name of SouthHouses is "the strange houses". The description of SouthHouses is "It was a strange building style Isaac never had seen before. If Isaac crossed the road, he could get a closer look.". Understand "houses" and "house" as SouthHouses.
+a house is scenery in Epping1218. The description of a house is "The nearest house was painted black with a white door and white window frames. Isaac could go south onto the porch.".
+some houses is scenery in Epping1218. The description of some houses is "All the houses were quite similar though some of them had different colors. Isaac had never seen this building style anywhere.".
+a path is a backdrop. a path is in ByCottage and SouthOfCottage. The description of a path is "[if player is in ByCottage]The path led south.[otherwise]The path led north into the forest.".
+busy street is a backdrop. A busy street is in LibraryFront and FollowKids. The printed name of a busy street is "the busy street". The description of a busy street is "The street was very busy, much too busy to cross.". Understand "road" and "busy road" as a busy street.
+small cottage is a backdrop. It is in ByCottage and InsideCottage. The printed name of small cottage is "the small dilapidated cottage". Understand "dilapidated" and "dilapidated cottage" and "small dilapidated" and "small dilapidated cottage" as small cottage. The description of small cottage is "[if player is in InsideCottage or player is on the stool]The cottage appeared much bigger and well kept than from the outside.[otherwise]The cottage appeared small and dilapidated.".
+a stone pavement is scenery in Epping1218. The description of the stone pavement is "The stone pavement led east and west along the road.".
+a clearing is scenery in ByCottage. The description of a clearing is "Nothing seemed to grow in the clearing. The only object of interest was the cottage.".
+KidsSign is scenery in FrontDesk. Understand "sign pointing east" and "sign" and "east sign" and "east" and "pointing east" as KidsSign while player is in FrontDesk. The printed name of KidsSign is "the sign pointing east". The description of KidsSign is "The sign said KIDS and pointed east.". Instead of taking KidsSign, say "Isaac had no need for a sign.".
+GrownSign is scenery in FrontDesk. Understand "sign pointing west" and "sign" and "west sign" and "west" and "pointing west" as GrownSign while player is in FrontDesk. The printed name of GrownSign is "the sign pointing west". The description of GrownSign is "The sign said GROWN-UPS and pointed west.".  Instead of taking GrownSign, say "Isaac had no need for a sign.".
+the expensive fashionable clothes are a backdrop. expensive fashionable clothes are everywhere. the description of expensive fashionable clothes is "It was the most expensive and fashionable clothes from 1673.".
+In InsideCottage is a stool. a stool is a chair. a stool is scenery. The description of a stool is "The stool seemed a bit rickety.".
+The glass door is a backdrop. The glass door is in LibraryFront and FrontDesk. "The glass door was closed and did not have a handle.".
+Shelves1 are scenery in FictionShelves. The printed name of Shelves1 is "the book shelves". Understand "fictional book shelves" and "book shelves" and "book shelf" and "shelves" and "shelf" as Shelves1. Shelves1 is a supporter. The description of Shelves1 is "The shelves were full of fiction books. They were sorted by author, so Isaac could SEARCH FOR an author if he could think of a fiction author.".
+Shelves2 are scenery in ScienceShelves. The printed name of Shelves2 is "the book shelves". Understand "scientific book shelves" and "book shelves" and "book shelf" and "shelves" and "shelf" as Shelves2.Shelves2 is a supporter. The description of Shelves2 is "The shelves were mostly filled with books. Isaac could SEARCH FOR an author if he could think of a science author. However, two sections were empty. One of them was called [']Theory of Relativity['] and the other was called [']Quantum Mechanics['].".
+Fbooks are scenery in FictionShelves. The printed name of Fbooks is "the fiction books". The description of Fbooks is "There were too many books to examine them all. However, they were sorted by author, so Isaac could SEARCH FOR an author if he could think of a fiction author.". Understand "fiction books" and "fiction" and "books" and "novels" and "novel" and "stories" and "story" as Fbooks.
+Sbooks are scenery in ScienceShelves. The printed name of Sbooks is "the scientific books". The description of Sbooks is "Most of the shelves were filled with books. Isaac could SEARCH FOR an author if he could think of a science author. However, two sections were empty. These two sections were called [']Theory of Relativity['] and [']Quantum Mechanics['].". Understand "science books" and "books" and "science"  as Sbooks.
+Understand "section" and "sections" as Shelves1 while player is in FictionShelves.
+Understand "section" and "sections" as Shelves2 while player is in ScienceShelves.
+Understand "book" as Fbooks while EinsteinFound is 0 and player is in FictionShelves.
+Understand "book" as Sbooks while EinsteinFound is 0 and player is in ScienceShelves.
+Instead of taking Fbooks, try examining Fbooks.
+Instead of taking Sbooks, try examining Sbooks.
+Shelves3 is scenery in KidsSection. The printed name of Shelves3 is "the book shelves". Understand "books" and "children's books" and "book shelves" and "book shelf" and "shelves" and "shelf" as Shelves3 while player is in KidsSection. Understand "book" as Shelves3 when player is in KidsSection and a very big book is not visible. Shelves3 is a supporter. The description of Shelves3 is "The shelves were full of children's books. Isaac had no need for those.".
+Instead of taking Shelves3, say "Isaac had no need for children's books.".
+KidChairs are scenery in KidsSection. KidChairs are chairs. The printed name of KidChairs is "the chairs". The description of KidChairs is "The chairs were too small for grown-ups.". Instead of entering KidChairs, say "The chairs were too small for grown-ups.". Understand "chair" as KidChairs when the player is in KidsSection.
+Some small school bags are on KidChairs. Some small school bags are openable containers. Some small school bags are closed. Understand "bag" and "small school bag" and "school bag" and "small bag" as some small school bags. The description of some small school bags is "The school bags were fairly small, suitable for children in kindergarten.".
+a lunch box is a thing in some small school bags. a lunch box is an openable container. The lunch box is closed.
+NewBag is a thing. NewBag is carried by NewChildren. The printed name of Newbag is "the boy's school bag". The description of NewBag is "The school bag with the book seemed almost full, unlike the other children's school bags." Understand "school bag" and "bag" and "small school bag" and "small bag" and "bags" and "small bags" and "small school bags" and "school bags" as NewBag. 
+NewTeacher is scenery in FollowKids. The printed name of NewTeacher is "the kindergarten teacher". Understand "teacher" and "woman" and "kindergarten" and "kindergarten teacher" and "Angela" as NewTeacher while player is in FollowKids. The description of NewTeacher is "The kindergarten teacher was way up ahead.".
+NewBook is scenery in FollowKids. Understand "Mathematical Principles of Natural Philosophy" and "Mathematical" and "principles" and "natural" and "philosophy" and "mathematical principles" and "natural philosophy" and "book" and "big book" and "very big book" and "book by Einstein" as NewBook when player is in FollowKids. The description of NewBook is "Isaac couldn't see the book as it was inside the boy's school bag.". The printed name of NewBook is "the big book by Einstein".
+a road sign is scenery in SouthOfCottage. The description of a road sign is "On the sign was written [']Epping Road['].".
+a white porch is scenery in PorchRoom. The description of a white porch is "The porch appeared to have been painted white recently.".
+PorchDoor is scenery in PorchRoom. The printed name of PorchDoor is "the front door". Understand "door" and "front" and "front door" as PorchDoor while player is in PorchRoom. The description of PorchDoor is "The wooden front door was painted white in contrast to the black wall. The door appeared to be locked.". PorchDoor is a an openable container. PorchDoor is locked.
+PorchWindow is scenery in PorchRoom. The printed name of PorchWindow is "the window". Understand "window" as PorchWindow. The description of PorchWindow is "Just as the door, the window frame was painted white. The curtains were drawn and the window was closed.".
+PorchWall is scenery in PorchRoom. The printed name of PorchWall is "the wall". Understand "wall" and "walls" and "house" and "house wall" as PorchWall while player is in PorchRoom. The description of PorchWall is "The walls of the house were all painted black unlike the porch, door and window frame which were all painted white.".
+furniture is scenery in InsideCottage. The printed name of some furniture is "the furniture". The description of the furniture is "There wasn't a lot of furniture in the cottage, only a small table, Anna's rocking chair and a rickety stool.". 
+a rocking chair is a chair. a rocking chair is scenery in InsideCottage. The description of the rocking chair is "The rocking chair looked comfortable unlike the rickety stool.". 
+a small table is scenery in InsideCottage. The description of the small table is "It was a rather small table. Currently, nothing was on it.".
+AnnaShelf is scenery in InsideCottage. The description of AnnaShelf is "The shelves were filled with jars, plants and stuffed animals. Isaac was not interested in those.". The printed name of AnnaShelf is "the shelves". Understand "shelves" and "shelf" and "jars" and "jar" and "plants" and "plant" and "stuffed animals" and "stuffed animal" and "animals" and "animal" and "stuffed" and "stuff" as AnnaShelf. 
+a library building is scenery in LibraryFront. The description of a library building is "The library was a red two-storey brick building with the letters L I B R A R Y above the door.". Understand "red building" and "big building" and "big red building" as a library building while player is in LibraryFront.
+a front desk is scenery in FrontDesk. The description of a front desk is "The front desk was wide and behind it stood a young librarian. He seemed quite busy.". a front desk is a supporter. Understand "counter" as a front desk.
+a low wide table is scenery in KidsSection. The description of a low wide table is "The low table was obviously designed for children. Isaac found it quite dirty. 'The children must have had lunch recently,' Isaac thought to himself.". a low wide table is a supporter.
+
+[CHARACTERS]
+queue are persons in FrontDesk. The printed name of queue is "the people standing in line". The description of queue is "Several people were standing in line, waiting for the librarian to register their loans manually.". Understand "people" and "standing people" and "standing" and "people standing" and "people standing in line" and "line" and "persons" and "folks" and "group" as queue.
+librarian is a man in FrontDesk. The printed name of a librarian is "the librarian behind the desk". The description of a librarian is "The librarian was a young man, perhaps 25 years old. He seemed quite busy but not too busy to keep an eye on Isaac.". Understand "man" as a librarian while player is in FrontDesk.
+NewChildren are persons in FollowKids. The printed name of NewChildren is "the boy carrying the bag with the book". Understand "children" and "kids" and "kid" and "child" and "boys" and "girl" and "girls" and "boy" as NewChildren while player is in FollowKids. The description of NewChildren is "Isaac was only interested in the boy carrying the bag with the book. The boy was right in front of him.".
+Anna Dalton is a woman. Anna Dalton is in InsideCottage. The description of Anna Dalton is "Despite being quite old, Anna looked healthy. She had a mysterious smile on her face. Isaac did not know if he could trust her.".
+a lot of children are persons in KidsSection. Understand "kids" as a lot of children. The description of a lot of children is "The kids seemed to have a good time playing.".
+The kindergarten teacher is a woman. Understand "Angela" and "woman" as the kindergarten teacher. The kindergarten teacher is in KidsSection.  The description of the kindergarten teacher is "The kindergarten teacher was a young woman. She was busy watching the kids.".
+
+[INSTEAD]
+Instead of pushing AnnaShelf, say "Isaac saw no reason to move around with the the things on the shelves.".
+Instead of pulling AnnaShelf, say "Isaac saw no reason to move around with the the things on the shelves.".
+Instead of pushing the furniture, say "Isaac saw no reason to move around with the furniture.".
+Instead of pulling the furniture, say "Isaac saw no reason to move around with the furniture.".
+Instead of pushing the table, say "Isaac saw no reason to move around with the table.".
+Instead of pulling the table, say "Isaac saw no reason to move around with the table.".
+Instead of pushing the stool, say "Isaac saw no reason to move around with the stool.".
+Instead of pulling the stool, say "Isaac saw no reason to move around with the stool.".
+Instead of dropping a very big book while the player is in ByCottage, say "Isaac did not want to lose this very important book.".
+Instead of going outside while player is on a stool, try going south.
+Instead of getting off the stool while player is on a stool, try going south.
+Instead of going outside while player is in InsideCottage, try going south.
+Instead of going inside while player is in ByCottage, try going north.
+Instead of listening while the player is in SouthOfCottage, say "Isaac could hear the birds chirping in the forest. He could also hear some strange noise from far away, too far away to investigate.".
+Instead of listening while the player is in KidsSection, say "The kids were pretty noisy. Isaac looked forward to leave this place."
+Instead of listening while the player is in FollowKids, say "The vehicles on the street were extremely noisy."
+Instead of listening while the player is in LibraryFront, say "The vehicles on the street were extremely noisy."
+Instead of listening while the player is in FrontDesk, say "Considering the long queue, people were relatively quiet."
+Instead of listening while the player is in Epping1218, say "Isaac could hear some strange noise from far away, too far away to investigate."
+Instead of listening while the player is in PorchRoom, say "It was very quiet here. Isaac was pretty sure that no one was home."
+Instead of listening while the player is in ByCottage, say "Isaac heard the birds chirping in the surrounding trees.".
+Instead of kissing NewChildren, say "Isaac saw no reason to do that.".
+Instead of kissing the lot of children, say "Isaac saw no reason to do that.".
+Instead of kissing queue, say "Isaac was not interested in the people in the queue.".
+Instead of kissing a librarian, say "Isaac was too busy to have a boyfriend.".
+Instead of kissing Anna Dalton, say "Isaac was too busy to have a girlfriend.".
+Instead of kissing a kindergarten teacher, say "Isaac was too busy to have a girlfriend.".
+Instead of giving something to queue, say "Nobody seemed interested.".
+Instead of showing something to queue, say "Nobody seemed interested.".
+Instead of giving something to a lot of children, say "The children were not interested.".
+Instead of showing something to a lot of children, say "The children were not interested.".
+Instead of giving something to a librarian, try talking a librarian.
+Instead of showing something to a librarian, try talking a librarian.
+Instead of taking the stool, say "It did not belong to Isaac.".
+Instead of taking the rocking chair, say "It did not belong to Isaac.".
+Instead of taking the small table, say "It did not belong to Isaac.".
+Instead of taking some furniture, say "It did not belong to Isaac.".
+Instead of putting a very big book on a front desk, try Linestanding queue.
+Instead of taking some small school bags, say "The kindergarten teacher would surely notice if you took one of the school bags.".
+Instead of searching some small school bags, try examining some small school bags.
+Instead of entering queue, try linestanding queue.
+Instead of going outside from FrontDesk, try going south.
+instead of going inside from LibraryFront, try going north.
+Instead of entering a library building, try going north.
+Instead of exiting while player is in FrontDesk, try going south.
+Instead of going south from LibraryFront, say "Isaac did not dare to cross such a busy road.".
+Instead of going southeast from LibraryFront, say "Isaac did not dare to cross such a busy road.".
+Instead of going southwest from LibraryFront, say "Isaac did not dare to cross such a busy road.".
+Instead of going east from LibraryFront, say "Isac was sure the solution to the mystery could be found in the library. Thus he saw no reason to leave now.".
+Instead of going west from LibraryFront, say "Isac was sure the solution to the mystery could be found in the library. Thus he saw no reason to leave now.".
+Instead of taking AnnaShelf, say "Isaac did not need anything from the shelves.".
+Instead of searching a rocking chair, say "Anna Dalton was seated on the rocking chair.".
+Instead of entering a rocking chair, say "That was Anna's chair.".
+Instead of going south from PorchRoom, say "The door was locked. Isaac could only go north from here.".
+Instead of opening PorchWindow, say "The windows could only be opened from inside.".
+Instead of closing PorchWindow, say "The window was already closed.".
+Instead of opening PorchDoor, say "Isaac tried to open the door but the door was locked.".
+Instead of closing PorchDoor, say "The door was already closed.".
+Instead of going east from Epping1218, say "There were just more houses in that direction so Isaac could just as well stay here.".
+Instead of going west from Epping1218, say "There were just more houses in that direction so Isaac could just as well stay here.".
+Instead of going east from SouthOfCottage, say "As far as Isaac could see, there was nothing interesting in that direction.".
+Instead of going west from SouthOfCottage, say "As far as Isaac could see, there was nothing interesting in that direction.".
+Instead of doing anything with NewTeacher, say "The kindergarten teacher was way up ahead.".
+Instead of opening a lunch box, say "Isaac didn't need to open the lunch box.".
+Instead of taking a lunch box, say "Isaac had no need for the lunch box.".
+Instead of examining some small school bags while some school bags are open:
+	say "The school bags were fairly small, suitable for children in kindergarten. One school bag was open. There was a lunch box inside.".
+Instead of opening some small school bags while some small school bags are closed and the very big book is in some small school bags:
+	say "In that very moment Isaac saw no need to open the bag. The book by Einstein was well hidden and one of the kids would soon carry the school bag with the book outside.".
+Instead of opening some small school bags while some small school bags are open:
+	say "Isaac had already opened one of the school bags.".	
+Instead of opening some small school bags while some small school bags are closed and the very big book is not in some small school bags:
+	say "When no one was looking, Isaac opened one of the school bags. It contained a lunch box.";
+	now some small school bags are open.
+Instead of inserting a very big book into some small school bags while some small school bags are open:
+	say "First Isaac had to make room for the book, so while no one was looking, Isaac hid the lunch box behind some books. Then he quickly slipped the big book by Einstein into the bag and closed it.";
+	now a lunch box is in Dummy;
+	now a very big book is inside some small school bags;
+	now some small school bags are closed;
+	now G6count is 0;
+	now GameScene is 6.
+Instead of closing some small school bags while some small school bags are open:
+	say "Isaac closed the school bag again.";
+	now some small school bags are closed.
+Instead of closing some small school bags while some small school bags are closed:
+	say "None of the school bags were open.".	
+instead of taking off the expensive fashionable clothes, say "Isaac saw no reason to remove his clothes.".
+instead of dropping the expensive fashionable clothes, try taking off the expensive fashionable clothes.
+instead of taking the expensive fashionable clothes, say "Isaac was already wearing his clothes.".
+instead of opening the glass door while DoorLearning is 0, say "Isaac did not know how to open the glass door since it did not have a handle.".
+instead of opening the glass door while DoorLearning is 1 and player is in LibraryFront, try going north.
+instead of opening the glass door while DoorLearning is 1 and player is in FrontDesk, try going south.
+Instead of closing the glass door, say "The glass door was already closed.".
+Instead of examining yourself, say "Isaac was very well dressed. He wore the latest in men's fashion of 1673.".
+Instead of exiting while the player is in InsideCottage, try going south.
+Instead of answering Anna Dalton that something, try talking Anna Dalton.
+Instead of asking Anna Dalton about something, try talking Anna Dalton.
+Instead of telling Anna Dalton about something, try talking Anna Dalton.
+Instead of answering queue that something, try talking queue.
+Instead of asking queue about something, try talking queue.
+Instead of telling queue about something, try talking a queue.
+Instead of asking queue to try doing something, try talking queue.
+Instead of answering the kindergarten teacher that something, try talking the kindergarten teacher.
+Instead of asking the kindergarten teacher about something, try talking the kindergarten teacher.
+Instead of telling the kindergarten teacher about something, try talking the kindergarten teacher.
+
+Instead of answering a librarian that something, try talking a librarian.
+Instead of asking a librarian about something, try talking a librarian.
+Instead of telling a librarian about something, try talking a librarian.
+Instead of asking a librarian to try doing something, try talking a librarian.
+
+Instead of answering NewChildren that something, try talking NewChildren.
+Instead of asking NewChildren about something, try talking NewChildren.
+Instead of telling NewChildren about something, try talking NewChildren.
+Instead of asking NewChildren to try doing something, try talking NewChildren.
+
+Instead of answering the children that something, try talking the children.
+Instead of asking the children about something, try talking the children.
+Instead of telling the children about something, try talking the children.
+Instead of asking the children to try doing something, try talking the children.
+Instead of asking Isaac Newton about something, try talking Isaac Newton.
+Instead of telling Isaac Newton about something, try talking Isaac Newton.
+Instead of entering The wooden door while the player is on a stool, try going south.
+Instead of entering small cottage while the player is on a stool, try going south.
+instead of entering The wooden door while the player is in InsideCottage:
+	try going  south.
+instead of entering small cottage while the player is in InsideCottage:
+	try going  south.
+instead of entering The wooden door while the player is in ByCottage:
+	try going  north.
+instead of entering small cottage while the player is in ByCottage:
+	try going  north.
+instead of going inside while player is in ByCottage, try  going north.
+
+[BEFORE]
+Before examining Sbooks, now Relativity is 1.
+Before examining Shelves2, now Relativity is 1.
+Before going south from FrontDesk while player is not holding a very big book, say "Isaac approached the door, which opened automatically. Isaac went south.".
+	Before going north from LibraryFront:
+	say "[if DoorLearning is 0]Isaac approached the door and to his surprise, it opened automatically. He hurried in.[otherwise]Isaac approached the door, which opened automatically. Isaac went north.";
+	now DoorLearning is 1.
+Before going south from SouthOfCottage, say "Isaac crossed the road.".
+Before going north from Epping1218, say "Isaac crossed the road.".
+
+[GAME SCENE 1 - before the player has entered the cottage for the first time]
+instead of going south from ByCottage while GameScene is 1, say "Isaac had just arrived. There was no reason to leave yet.".
+instead of opening the wooden door while knocks is 0, say "Isaac found it impolite to enter without knocking first.".
+after going north from ByCottage while knocks is 1 and GameScene is 1:	
+	say "[line break]Isaac entered the cottage. 'Please close the door again,' said an old, small woman seated in a rocking chair against the north wall. 'I am very sensitive to drafts. Have a seat.'[paragraph break]Isaac closed the door and sat down on a stool in front of the old woman, who was obviously Anna Dalton.";
+	now the wooden door is closed;
+	now Anna Dalton is in Dummy;
+	now player is on the stool;
+	say "'That was easy, to lure you in here!' Anna said with a nasty smile on her face. 'Feel free to leave anytime - the phenomenon has already happened. You'll see. By the way, you might become very thirsty - it is a side effect...'";
+	now Anna Dalton is in InsideCottage;
+	now GameScene is 2.
+
+[GAME SCENE 2 - right after being told that the phenomenon has already happened]
+instead of going south from InsideCottage  while GameScene is 2:
+	say "Isaac [if Isaac Newton is on a stool]stood up and [end  if]left the cottage, closing the door after him. The air felt warmer, almost as if it was summer. He walked south out of the forest along a path. But he didn't walk for long before he saw something was different. A lot of small houses appeared in the distance. Isaac was sure they weren't there before. Isaac kept walking until he reached a road stretching east and west. Right on the other side of this road, there were some strange small houses, a building style which Isaac had never seen before. Furthermore, the road was not of ordinary cobblestone but made of a material that Isaac recognized as asphalt. How strange...";
+	move player to SouthOfCottage;
+	now the wooden door is closed;
+	now GameScene is 3;
+	now thirsty is 1.
+
+[GAME SCENE 3 - right after having reached the asphalt road for the first time]
+instead of going north from SouthOfCottage  while GameScene is 3, say "Isaac did not want to return to the cottage before he had explored the strange surroundings more thoroughly.".
+	
+[GAME SCENE 4 - Back by the cottage for the second time]
+instead of going south from ByCottage  while GameScene is 4, say "First Isaac had to talk to Anna Dalton. She no doubt knew what was going on.".
+
+after going north from ByCottage while GameScene is 4:
+	say "Isaac entered the cottage.[paragraph break]";
+now Anna Dalton is in Dummy;	
+try looking;
+	say "[italic type]'I demand to know what is going on!'[roman type] Isaac shouted.[paragraph break]'Easy my friend,' Anna said calmly. 'You just have to find out what is wrong with the future before I can send you back. I don't know what is wrong, that is why I brought you here, the biggest genius in history.'";
+	now Anna Dalton is in InsideCottage.
+		
+instead of going south from InsideCottage while GameScene is 4:
+	say "Isaac left the cottage and walked back to the road. He was about to cross it when some strange vehicle approached from the east. It wasn't drawn by any horses, but as it passed Isaac, he noticed a man inside of it. Isaac watched in admiration as the vehicle drove further west.[paragraph break]Suddenly Isaac thought to himself, 'I must get a ride into the city!' and so Isaac waited for another vehicle. After a while, another vehicle approached from the east.[paragraph break]Isaac waved at the car. Unexpectedly, the car pulled over and the driver rolled down the window. The driver, who was an older woman, said, 'You need a ride?'[paragraph break]'Please bring me to the city!' Isaac almost shouted. 'I need to find a library!'[paragraph break]'Sure, hop in,' she said. Isaac managed to open the door and got in.[paragraph break]Half an hour later, the driver pulled over in front of a big red building with the word [']Library['] written in big fat letters across the front. Isaac thanked the woman and got out of the car.";
+	now GameScene is 5;
+	now the wooden door is closed;
+	move player to LibraryFront.
+
+[GAME SCENE 7 - Following the kids]
+Instead of going east while player is in FollowKids,  say "Isaac did not want to leave the kids.".
+Instead of going west while player is in FollowKids,  say "Isaac did not want to leave the kids.".
+Instead of going south while player is in FollowKids,  say "Isaac did not want to leave the kids.".
+Instead of opening NewBag, try taking NewBook.
+Instead of taking NewBook:
+	say "As carefully as possible, Isaac opened the boy's school bag and pulled out [']Mathematical Principles of Natural Philosophy['] by Albert Einstein. Shortly after the boy who had carried the book yelled, 'Angela, my bag isn't heavy anymore.'[paragraph break]The kids kept on walking but Isaac had stopped. Triumphantly he looked at the book. 'This must be it!' he thought to himself.[paragraph break]Isaac tried to hitch a ride but no one stopped. He realized that he had to walk back to the forest. As the weather was good, that wasn't going to be a problem.[paragraph break]Isaac walked for a little more than an hour before arriving at Anna Dalton's cottage.";
+	now GameScene is 8;
+	now a very big book is held by player;
+	now player is in ByCottage.
+
+[GAME SCENE 8 - By cottage with the book]
+instead of going south from ByCottage while GameScene is 8, say "Isaac was sure he was ready to face Anna Dalton a final time. He saw no reason to go back.".
+Instead of going north from ByCottage while GameScene is 8:
+	say "[paragraph break][line break]Once again Isaac entered the cottage. He closed the door, as he remembered that Anna was sensitive to drafts.[paragraph break]Anna started to talk, 'Welcome my friend! I can feel the energies surrounding you are very positive now. I think it is time to bring you back to your own time. But first, please show me the object you found.'[paragraph break]Isaac showed her the book. 'A science book!' Anna exclaimed. 'Of course! Well, let's get you back to your own time.' Anna made an apparently insignificant move with her right hand and continued, 'Now leave. When you go out that door you will be back in 1673. I am sure you will know what to do with that book.'[paragraph break]Isaac said goodbye and left. He found that everything was back to normal in London. Well, except for that book. Isaac hid the book well for many years and started to translate it into Latin. The final title was [']Philosophiæ Naturalis Principia Mathematica['] and it was divided into three volumes in case some poor child would have to carry some of it in a school bag someday. Isaac decided to publish the book on the 5th of July 1687 and he burned the original by Einstein.[paragraph break]With gravity and mechanics in place, Isaac felt confident that Einstein and his peers sometime in the future would master [if Relativity is 0]the forgotten physics of the future, [otherwise]the Theory of Relativity and Quantum Mechanics, [end if]and as a consequence, everything would be back to normal in 2020.[paragraph break]The publication [']Philosophiæ Naturalis Principia Mathematica['] was a huge success and Isaac became known as the greatest scientist ever, while he was still alive. Isaac had truly been standing on the shoulders of a giant.";
+	end the story finally saying "[bold type]The End ***[roman type][paragraph break][italic type](This game is a prequel to a bigger and better game in the works. This upcoming game will involve time travel as well, so the story line you just witnessed may very well be avoided)".
+
+Instead of doing anything other than taking to NewBook, say "Isaac couldn't as the book by Einstein was inside the boy's school bag.".
+
+[CHECKING]
+check xyzzying:
+	say "Isaac had never been in the colossal cave.".
+
+check helping:
+	say "You can find a walkthrough for this game online. During IFcomp 2020 the walkthrough can be found on the IFcomp website ( www.ifcomp.org ). After the comp it can be found in the IF Archive ( www.ifarchive.org ). However, it may be easier to locate the walkthrough via IFDB ( www.ifdb.tads.org ).".
+	
+check borrowing:
+	if noun is a very big book and player is in FrontDesk, try linestanding queue;
+	if noun is not a very big book and player is in FrontDesk, say "The only things Isaac could borrow in a place like this were books.";
+	if player is not in FrontDesk, say "Isaac couldn't borrow anything in this location.".
+	
+check linestanding:
+	if noun is queue, say "Isaac saw no reason to stand in line. He wouldn't be able borrow a book anyway, since he could not document who he was or where he lived.";
+	if noun is not queue, say "Isaac could not stand in [the noun].".
+
+check OnKnocking:
+	if noun is not the wooden door, say "Isaac knocked on [noun] but nothing happened.";
+	if noun is the wooden door and the wooden door is open, say "The door was already open.";
+	if noun is the wooden door and the wooden door is not open begin;
+		if knocks is 1 begin;
+			say "Isaac knocked on the door again. 'No need to knock again. Come in!' a voice shouted from inside the cottage.";
+		end if;
+		if knocks is 0 begin;
+			say "Isaac knocked on the door. 'Come in!' a voice shouted from inside the cottage.";
+			now knocks is 1;
+		end if;
+	end if.
+
+check Talking:
+	now TalkCount is 0;
+	if noun is queue begin;
+		say "Isaac saw no reason to talk to any of the persons in the queue.";
+		now TalkCount is 1;
+	end if;
+	if noun is NewChildren or noun is NewTeacher begin;
+		say "Isaac did not want to draw attention so he decided not to talk to anyone.";
+		now TalkCount is 1;
+	end if;
+	if noun is a librarian begin;
+		say "'Sorry, but it ain't your turn Mister,' the librarian said. 'You have to stand in line like everyone else.'";
+		now TalkCount is 1;
+	end if;
+		if noun is the children begin;
+		say "One of the kids looked at Isaac for a second, then [one of]she[or]he[cycling] continued with what [one of]she[or]he[cycling] was doing.";
+		now TalkCount is 1;
+	end if;
+	if noun is the kindergarten teacher and AngelaKnown is 1 begin;
+		say "Isaac tried to talk to the kindergarten teacher again.[line break] 'Sorry, but I really need to keep an eye on these little bandits,' Angela said with a smile.";
+		now TalkCount is 1;
+	end if;
+	if noun is the kindergarten teacher and AngelaKnown is 0 begin;
+		say "Isaac said hello to the kindergarten teacher.[line break] 'Hi, I'm Angela. Sorry, but I need to keep an eye on the kids.'";
+		now AngelaKnown is 1;
+		now TalkCount is 1;
+	end if;
+	if noun is Anna Dalton and GameScene is less than 4 begin;
+		say "Isaac tried to get some more information from Anna but she just shook her head and said, 'I am sure you can figure this out on your own. Good luck!'";
+		now TalkCount is 1;
+	end if;
+	if noun is Anna Dalton and GameScene is 4 begin;
+		say "Isaac tried to get some more information from Anna but she just shook her head and said, 'You need to figure this out on your own. However, I feel that you might need to find a specific object to solve the problem. Good luck!'";
+		now TalkCount is 1;
+	end if;
+	if noun is player begin;
+		say "Although it is said that intelligent people speak to themselves, Isaac did not speak to himself.";
+		now TalkCount is 1;
+	end if;
+	if TalkCount is 0, say "Isaac could not talk to that.".
